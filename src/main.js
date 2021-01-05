@@ -3,7 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
+import 'bootstrap'
+
+Vue.config.productionTip = false;
+// loading page 套件
+Vue.use(VueLoading);
+Vue.component('loading', VueLoading);
 
 new Vue({
   router,
