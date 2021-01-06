@@ -37,9 +37,9 @@
                 <div class="footer_item">
                     <h4>關於我們</h4>
                     <nav>
-                        <a href=""><i class="fas fa-chevron-right"></i> 品牌故事</a>
-                        <a href=""><i class="fas fa-chevron-right"></i> 聯絡我們</a>
-                        <a href=""><i class="fas fa-chevron-right"></i> 門市地點</a>
+                        <router-link :to="{name:''}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 品牌故事</router-link>
+                        <router-link :to="{name:'Contact' }"  @click.native="go_top"><i class="fas fa-chevron-right"></i> 聯絡我們</router-link>
+                        <router-link :to="{name:''}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 門市地點</router-link>
                     </nav>
                 </div>
                 <div class="footer_item">
@@ -49,7 +49,7 @@
                     </nav>
                 </div>
                 <div class="footer_item">
-                    <h4>社群媒體</h4>
+                    <h4>關注我們</h4>
                     <nav>
                         <div v-for="(item,index) in social_media" :key="index">
                             <a :href="item.link"><i :class="item.icon"></i></a>

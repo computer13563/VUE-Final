@@ -31,7 +31,7 @@
                         <router-link :to="{name:'Allproduct'}">所有商品</router-link>
                         <router-link :to="{name:''}">訂購流程</router-link>
                         <router-link :to="{name:''}">門市地點</router-link>
-                        <router-link :to="{name:''}">聯絡我們</router-link>
+                        <router-link :to="{name:'Contact'}">聯絡我們</router-link>
                         <router-link :to="{name:''}">關於我們</router-link>
                     </div>
 

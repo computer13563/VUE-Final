@@ -14,6 +14,8 @@ import Allproduct from '@/components/front_end/all_product.vue'
 import Cart from '@/components/front_end/cart.vue'
 import Recipient from '@/components/front_end/recipient.vue'
 import Checkout from '@/components/front_end/checkout.vue'
+import Contact from '@/components/front_end/contact_page.vue'
+
 import Carousel from '@/components/front_end/homepage/carousel.vue'
 
 import {user_status} from '@/components/api/account_uploadpic_api.js'
@@ -51,6 +53,12 @@ const routes = [
     name: 'Checkout',
     component: Checkout
   },
+
+{
+  path:'/contact',
+  name:'Contact',
+  component:Contact
+},
 
   {
     path: '/carousel',
