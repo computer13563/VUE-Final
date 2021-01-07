@@ -15,14 +15,16 @@ import Cart from '@/components/front_end/cart.vue'
 import Recipient from '@/components/front_end/recipient.vue'
 import Checkout from '@/components/front_end/checkout.vue'
 import Contact from '@/components/front_end/contact_page.vue'
+import Shop from '@/components/front_end/shop_page.vue'
 
 import Carousel from '@/components/front_end/homepage/carousel.vue'
 
-import {user_status} from '@/components/api/account_uploadpic_api.js'
+import {
+  user_status
+} from '@/components/api/account_uploadpic_api.js'
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/index',
     name: 'Homepage',
     component: Homepage,
@@ -54,11 +56,16 @@ const routes = [
     component: Checkout
   },
 
-{
-  path:'/contact',
-  name:'Contact',
-  component:Contact
-},
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
+  },
+  {
+    path:'/shop',
+    name:'Shop',
+    component:Shop
+  },
 
   {
     path: '/carousel',
@@ -74,10 +81,9 @@ const routes = [
     path: '/admin',
     name: 'Dashboard',
     component: Dashboard,
-    children: [
-      {
-        path:'',
-        redirect:'products'
+    children: [{
+        path: '',
+        redirect: 'products'
       },
       {
         path: 'products',
@@ -106,8 +112,8 @@ const routes = [
     ]
   },
   {
-    path:'*?',
-    redirect:'/index'
+    path: '*?',
+    redirect: '/index'
   }
 ]
 

@@ -1,0 +1,14 @@
+$pad-upper-limit:768px;
+$pad-lower-limit:767px;
+
+@mixin no-more-767() {
+    @media screen and (max-width:$pad-lower-limit) {
+        @content;
+    }
+}
+
+@mixin more-768() {
+    @media screen and (min-width:$pad-upper-limit) {
+        @content;
+    }
+}

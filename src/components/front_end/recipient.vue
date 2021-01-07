@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import NavbarSecStyle from '@/components/front_end/navbar_sec_style.vue'
+    import NavbarSecStyle from '@/components/front_end/navbar/navbar_sec_style.vue'
     import {
         check_out_page_api
     } from '@/components/api/cus_api.js'

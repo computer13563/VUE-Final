@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import NavbarSecStyle from '@/components/front_end/navbar_sec_style.vue'
+    import NavbarSecStyle from '@/components/front_end/navbar/navbar_sec_style.vue'
 
     import ContactTitle from '@/components/front_end/contact/contact_title.vue'
     import ContactConnectBlock from '@/components/front_end/contact/contact_connect_block.vue'

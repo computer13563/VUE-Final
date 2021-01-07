@@ -167,10 +167,9 @@
         get_order_list_api,
         add_to_cart_api,
         get_products_api,
-        two_axios
     } from '@/components/api/cus_api.js'
 
-    import NavbarSecStyle from '@/components/front_end/navbar_sec_style.vue'
+    import NavbarSecStyle from '@/components/front_end/navbar/navbar_sec_style.vue'
 
     export default {
         name: 'Cart',

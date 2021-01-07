@@ -13,7 +13,8 @@
 </template>
 
 <script>
-    import Navbar from '@/components/front_end/navbar.vue'
+    // import Navbar from '@/components/front_end/navbar.vue'
+    import Navbar from '@/components/front_end/navbar/navbar_fir_style.vue'
     import Footer from '@/components/front_end/footer.vue'
     import Indexcontent from '@/components/front_end/indexcontent.vue'
 

@@ -89,7 +89,7 @@
         get_single_order_api,
         check_out_api
     } from '@/components/api/cus_api.js'
-    import NavbarSecStyle from '@/components/front_end/navbar_sec_style.vue'
+    import NavbarSecStyle from '@/components/front_end/navbar/navbar_sec_style.vue'
 
     export default {
         name: 'Checkout',
