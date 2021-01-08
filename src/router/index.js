@@ -9,12 +9,19 @@ import Products from '@/components/back_end/Products_dashboard.vue'
 import Coupon from '@/components/back_end/Coupon_dashboard.vue'
 import Order from '@/components/back_end/Order_dashboard.vue'
 
+// 首頁的內容
 import Indexcontent from '@/components/front_end/indexcontent.vue'
+// 所有商品頁面
 import Allproduct from '@/components/front_end/all_product.vue'
+// 購物車
 import Cart from '@/components/front_end/cart.vue'
+// 結帳填寫收件人
 import Recipient from '@/components/front_end/recipient.vue'
+// 結帳頁面
 import Checkout from '@/components/front_end/checkout.vue'
+// 聯絡我們頁面
 import Contact from '@/components/front_end/contact_page.vue'
+// 商店列表頁面
 import Shop from '@/components/front_end/shop_page.vue'
 import ShopLocation from '@/components/front_end/shop/shop_location.vue'
 import ShopDetail from '@/components/front_end/shop/shop_detail.vue'
