@@ -23,7 +23,7 @@
                         <router-link :to="{name:'Login'}">會員登入</router-link>
                     </p>
 
-                    <p class="cart">
+                    <p class="cart" @click="go_cart_page">
                         <router-link :to="{name:'Cart'}">
                             <i class="fas fa-shopping-bag"></i>
                         </router-link>
@@ -65,6 +65,9 @@
                     vm.isLoading = false;
                     console.log(vm.cart);
                 })
+            },
+            go_cart_page(){
+              this.$router.push('/cart');  
             },
             go_top() {
                 window.scroll(0, 0);
