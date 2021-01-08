@@ -68,7 +68,7 @@ export default{
 
     // 自定義直向卡片樣式
     .cus_card {
-        
+        cursor: pointer;
         .cus_card_slogan {
             color: #fff;
             letter-spacing: .8rem;

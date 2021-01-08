@@ -9,9 +9,14 @@
 
             <div class="row">
                 <div class="col">
-                    <ShopLocation></ShopLocation>
+                    <router-view></router-view>
+                    <!-- <ShopLocation></ShopLocation> -->
                 </div>
             </div>
+
+            <!-- <div class="row">
+<ShopDetail></ShopDetail>
+            </div> -->
         </div>
     </div>
 </template>
@@ -19,14 +24,14 @@
 <script>
     import NavbarThird from '@/components/front_end/navbar/navbar_third_style.vue'
 
-    import ShopLocation from '@/components/front_end/shop/shop_location.vue'
     export default {
         components: {
             NavbarThird,
-            ShopLocation
         },
         data() {
             return {}
+        },
+        created(){
         }
     }
 </script>

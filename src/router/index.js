@@ -16,6 +16,8 @@ import Recipient from '@/components/front_end/recipient.vue'
 import Checkout from '@/components/front_end/checkout.vue'
 import Contact from '@/components/front_end/contact_page.vue'
 import Shop from '@/components/front_end/shop_page.vue'
+import ShopLocation from '@/components/front_end/shop/shop_location.vue'
+import ShopDetail from '@/components/front_end/shop/shop_detail.vue'
 
 import Carousel from '@/components/front_end/homepage/carousel.vue'
 
@@ -62,9 +64,21 @@ const routes = [{
     component: Contact
   },
   {
-    path:'/shop',
-    name:'Shop',
-    component:Shop
+    path: '/shop',
+    name: 'Shop',
+    component: Shop,
+    redirect:'/shop',
+    children: [{
+        path: '',
+        name: 'ShopLocation',
+        component:ShopLocation
+      },
+      {
+        path:':shop_id',
+        name:'ShopDetail',
+        component:ShopDetail
+      }
+    ]
   },
 
   {

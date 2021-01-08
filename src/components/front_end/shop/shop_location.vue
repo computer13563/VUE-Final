@@ -17,7 +17,7 @@
                     </div>
                     <div class="shop_btn">
                         <a :href="item.link"><i class="fas fa-map-marker-alt"></i>google map</a>
-                        <button @click.prevent="more_link">更多...</button>
+                        <button @click.prevent="more_link(item.id),go_top()">更多...</button>
                     </div>
                 </div>
             </router-link>
@@ -42,14 +42,14 @@
         data() {
             return {
                 shop_local: [{
-                        id: '1',
+                        id: 'taipei',
                         img: require('../../../assets/photos/shop_img.jpg'),
                         name: 'DESSERT 台北店',
                         address: '台北市信義區信義路五段7號',
                         link: 'https://goo.gl/maps/kLjxinPc82DGPPV47'
                     },
                     {
-                        id: '2',
+                        id: 'Kaohsiung',
                         img: require('../../../assets/photos/shop_img.jpg'),
                         name: 'DESSERT 高雄店',
                         address: '高雄市苓雅區自強三路3號',
@@ -70,8 +70,11 @@
             }
         },
         methods: {
-            more_link() {
-                this.$router.push('/shop');
+            more_link(id) {
+                this.$router.push(`/shop/${id}`);
+            },
+            go_top() {
+                window.scroll(0, 0);
             }
         },
         created() {

@@ -148,7 +148,6 @@
         computed: {
             filter_data() {
                 const vm = this;
-                console.log(vm.search_text);
                 if (vm.search_text) {
                     return vm.products.filter(item => {
                         return item.category.toLowerCase().match(vm.search_text.toLowerCase());
