@@ -25,10 +25,9 @@
 
                     <p class="cart">
                         <router-link :to="{name:'Cart'}">
-                            <!-- <i class="fas fa-shopping-cart cart_icon"></i> -->
                             <i class="fas fa-shopping-bag"></i>
                         </router-link>
-                        <span class="cart_item_num">{{cart.carts.length}}</span>
+                        <span class="cart_item_num" v-if="cart.carts.length">{{cart.carts.length}}</span>
                     </p>
 
                     <label for="nav_control" class="nav_btn"></label>
@@ -40,7 +39,7 @@
 </template>
 
 <script>
-import {
+    import {
         get_cart_list_api,
         del_cart_info_api,
         get_order_list_api,
@@ -48,7 +47,9 @@ import {
     export default {
         data() {
             return {
-                cart:{}
+                cart: {
+                    carts: []
+                }
             }
         },
         methods: {
@@ -67,15 +68,17 @@ import {
             },
             go_top() {
                 window.scroll(0, 0);
-            }
+            },
         },
-        created(){
+        created() {
             this.get_cart_list();
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    @import '@/assets/_media.scss';
+
     * {
         margin: 0;
         padding: 0;
@@ -99,12 +102,14 @@ import {
         }
     }
 
+    .nav_row {
+        max-width: 1440px;
+    }
+
     .navbar_col {
         display: flex;
         padding: 10px 20px;
         background: #fffaf0;
-        border-radius: 50px 0 0 50px;
-        margin: 0 0 0 5vw;
         position: relative;
         transition: .3s;
 
@@ -115,22 +120,14 @@ import {
             i,
             span {
                 color: #f0a28f;
-
             }
 
         }
 
         // 導覽列裡面選項
         @at-root .nav_item {
-            display: block;
-            width: calc(95vw);
             background: #fffaf0;
-            position: absolute;
-            top: 55px;
-            right: 0;
-            left: 0;
             margin: auto;
-            opacity: 0;
             transition: .3s ease-in-out;
             z-index: 1;
 
@@ -139,9 +136,11 @@ import {
                 display: block;
                 font-size: 18px;
                 letter-spacing: 5px;
-                padding: 10px 20px;
                 color: #f0a28f;
-                border-bottom: 1px solid #eedfdb;
+
+                a:hover {
+                    color: #e48973;
+                }
             }
         }
 
@@ -150,12 +149,12 @@ import {
             width: 50px;
             height: 100%;
             font-size: 40px;
-            margin: 0 50px 0 auto;
             text-align: center;
             border-radius: 50%;
             position: absolute;
             top: 0;
             right: 0;
+            z-index: 1;
 
             // 購物車顏色設定
             a {
@@ -163,47 +162,124 @@ import {
             }
 
             // 購物車物品數量顯示
-            .cart_item_num {
+            @at-root .cart_item_num {
                 display: block;
                 width: 25px;
                 height: 25px;
+                font-size: 20px;
+                margin: auto;
                 border-radius: 50%;
                 color: #fff;
+                cursor: pointer;
                 position: absolute;
                 top: 10px;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                margin: auto;
-                font-size: 20px;
             }
         }
 
-        // 漢堡樣式設定
-        @at-root .nav_btn {
-            width: 50px;
-            height: 55px;
-            background: #fffaf0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            margin: auto;
+    }
 
-            // 漢堡的三條線設定
-            &::before {
-                content: '';
-                height: 2px;
-                width: 30px;
-                background: #f0a28f;
-                box-shadow: 0 10px 0 #f0a28f, 0 -10px 0 #f0a28f;
+    // RWD
+    @include more-360 {
+        .navbar_col {
+            border-radius: 50px 0 0 50px;
+            margin: 0 0 0 5vw;
+
+            // LOGO樣式設定
+            @at-root .nav_logo {}
+
+            // 導覽列裡面選項
+            @at-root .nav_item {
+                position: absolute;
+                top: 55px;
+                right: 0;
+                left: 0;
+                opacity: 0;
+
+                // 導覽列的選項樣式設定
+                a {
+                    padding: 10px 20px;
+                    border-bottom: 1px solid #eedfdb;
+                }
+            }
+
+            // 購物車的LOGO樣式設定
+            @at-root .cart {
+                margin: 0 50px 0 auto;
+            }
+
+            // 漢堡樣式設定
+            @at-root .nav_btn {
+                width: 50px;
+                height: 55px;
+                background: #fffaf0;
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                left: 0;
                 right: 0;
                 margin: auto;
+
+                // 漢堡的三條線設定
+                &::before {
+                    content: '';
+                    height: 2px;
+                    width: 30px;
+                    background: #f0a28f;
+                    box-shadow: 0 10px 0 #f0a28f, 0 -10px 0 #f0a28f;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+
+
+        }
+    }
+
+    // RWD
+    @include more-992 {
+
+        .navbar_col {
+            border-radius: 50px 50px 50px 50px;
+            margin: 0 5vw 0 5vw;
+
+            // LOGO樣式設定
+            @at-root .nav_logo {}
+
+            // 導覽列裡面選項
+            @at-root .nav_item {
+
+                display: flex;
+                position: relative;
+                top: 0;
+                opacity: 1;
+
+                // 導覽列的選項樣式設定
+                a {
+                    padding: 10px 10px;
+                    border-bottom: none;
+
+                    &:hover {
+                        color: #e48973;
+                    }
+                }
+            }
+
+            // 購物車的LOGO樣式設定
+            @at-root .cart {
+                margin: 0 30px 0 0;
+            }
+
+            // 漢堡樣式設定
+            @at-root .nav_btn {
+                display: none;
             }
         }
+
     }
 </style>

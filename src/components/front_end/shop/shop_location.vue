@@ -6,7 +6,7 @@
                 <p>商店地點</p>
             </div>
 
-            <a href="" class="row shop_detail" v-for="item in shop_local" :key="item.id">
+            <router-link :to="{name:'Shop'}" class="row shop_detail" v-for="item in shop_local" :key="item.id">
                 <div class="col-12 col-md-5 shop_img">
                     <img :src="item.img" alt="">
                 </div>
@@ -17,10 +17,10 @@
                     </div>
                     <div class="shop_btn">
                         <a :href="item.link"><i class="fas fa-map-marker-alt"></i>google map</a>
-                        <button>更多...</button>
+                        <button @click.prevent="more_link">更多...</button>
                     </div>
                 </div>
-            </a>
+            </router-link>
 
             <div class="row future">
                 <p>即將開幕</p>
@@ -70,10 +70,11 @@
             }
         },
         methods: {
-
+            more_link() {
+                this.$router.push('/shop');
+            }
         },
         created() {
-            console.log(this.shop_local);
         }
     }
 </script>
@@ -131,6 +132,7 @@
                     border-left: 60px solid transparent;
                     position: absolute;
                     right: 0;
+                    z-index: 1;
                 }
 
                 @at-root img {
@@ -169,6 +171,7 @@
                 button {
                     width: 150px;
                     height: 50px;
+                    outline: none;
                     border: none;
                     border-radius: 25px;
                     font-size: 16px;
@@ -178,6 +181,11 @@
                     background: #fff;
                     box-shadow: 6px 6px 8px #efdcb8;
                     transition: .2s;
+
+                    &:active {
+                        outline: none;
+                        border: none;
+                    }
                 }
 
                 a {
@@ -202,37 +210,41 @@
             }
         }
 
-        @at-root .future{
-            p{
-                color:#fff;
+        @at-root .future {
+            p {
+                color: #fff;
                 font-size: 50px;
                 letter-spacing: 10px;
                 margin-bottom: 20px;
             }
         }
 
-        @at-root .future_item{
-            margin-bottom:30px;
-            p{
+        @at-root .future_item {
+            margin-bottom: 30px;
+
+            p {
                 background: #fff;
                 padding: 20px;
                 margin-bottom: 10px;
-                span{
+
+                span {
                     display: block;
                     letter-spacing: 5px;
                 }
-                span:nth-child(1){
+
+                span:nth-child(1) {
                     font-size: 20px;
                     margin-bottom: 15px;
                 }
-                span:nth-child(2){
+
+                span:nth-child(2) {
                     font-size: 30px;
                 }
             }
         }
     }
 
-    @include no-more-767 {
+    @include less-768 {
         .shop_container {
             padding: 10px;
         }
