@@ -12,23 +12,23 @@
                 <div class="footer_item">
                     <h4>所有商品</h4>
                     <nav>
-                        <router-link :to="{name:'Allproduct'}" @click.native="go_top">
+                        <router-link :to="{name:'AllProduct'}" @click.native="go_top">
                             <i class="fas fa-chevron-right"></i>
                             所有商品
                         </router-link>
-                        <router-link :to="{name:'Allproduct'}" @click.native="go_top">
+                        <router-link :to="{name:'AllProduct'}" @click.native="go_top">
                             <i class="fas fa-chevron-right"></i>
                             焦糖烤布蕾
                         </router-link>
-                        <router-link :to="{name:'Allproduct'}" @click.native="go_top">
+                        <router-link :to="{name:'AllProduct'}" @click.native="go_top">
                             <i class="fas fa-chevron-right"></i>
                             舒芙蕾
                         </router-link>
-                        <router-link :to="{name:'Allproduct'}" @click.native="go_top">
+                        <router-link :to="{name:'AllProduct'}" @click.native="go_top">
                             <i class="fas fa-chevron-right"></i>
                             蒙布朗
                         </router-link>
-                        <router-link :to="{name:'Allproduct'}" @click.native="go_top">
+                        <router-link :to="{name:'AllProduct'}" @click.native="go_top">
                             <i class="fas fa-chevron-right"></i>
                             馬卡龍
                         </router-link>

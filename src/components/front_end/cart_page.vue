@@ -103,58 +103,6 @@
             </section>
         </div>
 
-        <div>
-            <!-- <table>
-                <thead>
-                    <tr>
-                        <td>品項</td>
-                        <td>數量</td>
-                        <td>單價</td>
-                        <td>刪除</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in cart.carts" :key="item.id">
-                        <td>{{item.product.title}}</td>
-                        <td>{{item.qty}}</td>
-                        <td>{{item.total}}</td>
-                        <td><button @click.prevent="del_cart(item.id)">刪除</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="text" v-model="coupon_code">
-            <button @click.prevent="use_coupon">套用購物券</button>
-            <label for="">總價格{{cart.total}}</label>
-            <label for="">折扣後{{cart.final_total}}</label> -->
-        </div>
-
-        <div>
-            <!-- <form @submit.prevent="check_out_page">
-                <div class="form-group">
-                    <label for="user_email">Email</label>
-                    <input type="text" id="user_email" v-model="order.data.user.email">
-                </div>
-                <div class="form-group">
-                    <label for="user_name">收件人姓名</label>
-                    <input type="text" id="user_name" v-model="order.data.user.name">
-                </div>
-                <div class="form-group">
-                    <label for="user_tel">收件人電話</label>
-                    <input type="text" id="user_tel" v-model="order.data.user.tel">
-                </div>
-                <div class="form-group">
-                    <label for="user_address">收件人地址</label>
-                    <input type="text" id="user_address" v-model="order.data.user.address">
-                </div>
-                <div class="form-group">
-                    <label for="remark">備註</label>
-                    <textarea name="" id="remark" cols="30" rows="10" v-model="order.data.message"></textarea>
-                </div>
-                <div>
-                    <button>送出訂單</button>
-                </div>
-            </form> -->
-        </div>
     </div>
 </template>
 

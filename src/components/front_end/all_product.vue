@@ -25,7 +25,7 @@
                 <div class="col-12 product_page_category_item">
 
                     <input type="checkbox" id="product_page_category_switch">
-
+                    <!-- 箭頭按下去會展開商品種類 -->
                     <label for="product_page_category_switch">
                         <i class="fas fa-angle-double-right"></i>
                         <!-- 上下裝飾線 -->
@@ -45,15 +45,22 @@
             <section class="row product_page_content">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4 product_card" v-for="item in filter_data" :key="item.id">
+                        <div class="col-12 col-md-6 col-lg-4 product_card" v-for="(item,index) in filter_data"
+                            :key="item.id">
                             <div class="card_item">
+
+                                <!-- 商品圖片 -->
                                 <div class="card_item_img">
                                     <img :src="item.image" alt="" class="">
                                 </div>
-                                <div class="card_item_icon" @click.prevent="add_to_cart(item.id)">
+
+                                <!-- 商品中間的購物車圖示 -->
+                                <div class="card_item_icon" @click.prevent="add_to_cart(item.id,index)">
                                     <i class="fas fa-spinner fa-spin" v-if="cart_loading === item.id"></i>
                                     <i class="fas fa-shopping-cart cart_icon" v-else></i>
                                 </div>
+
+                                <!-- 商品的說明文字 -->
                                 <div class="card_item_text">
                                     <div>
                                         <h2>{{item.title}}</h2>
@@ -75,12 +82,19 @@
 
                                 </div>
                             </div>
+
+                            <!-- 成功加入購物車訊息 -->
+                            <div class="alert_msg" v-if="alert_status === item.id">
+                                <span>{{alert_mag}}</span>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </section>
 
         </div>
+
     </div>
 </template>
 
@@ -92,15 +106,20 @@
 
     export default {
         name: 'all_product',
+        components: {
+            AlertMsg
+        },
         data() {
             return {
                 products: {},
                 categories: {},
                 filter: {},
-                isLoading:false,
+                isLoading: false,
                 cart_loading: 'nothing',
                 search_text: '',
-                search_text_eng: ''
+                search_text_eng: '',
+                alert_mag: '成功加入購物車',
+                alert_status: 'nothing'
             }
         },
         methods: {
@@ -120,19 +139,36 @@
                         vm.isLoading = false;
                     })
             },
-            add_to_cart(id, qty = 1) {
+            add_to_cart(id, index, qty = 1) {
                 const vm = this;
+                const card_item_icon = document.querySelectorAll('.card_item_icon');
                 const cart = {
                     data: {
                         product_id: id,
                         qty
                     }
                 };
+                // 轉圈圈的時候不能消失
+                card_item_icon.forEach((item, index_icon) => {
+                    if (index_icon == index) {
+                        item.classList.add('card_item_icon_loading');
+                    }
+                })
+                
+                // 轉圈圈的出現
                 vm.cart_loading = id;
                 add_to_cart_api(cart)
                     .then(res => {
                         console.log(res);
                         vm.cart_loading = '';
+                        // 轉圈圈消失
+                        card_item_icon.forEach((item, index_icon) => {
+                            if (index_icon == index) {
+                                item.classList.remove('card_item_icon_loading');
+                            }
+                        })
+                        // 顯示成功訊息
+                        vm.alert_cancel(id, index);
                     })
             },
             get_text(text) {
@@ -143,7 +179,26 @@
                     vm.search_text_eng = text;
                 }
                 vm.search_text = text;
-            }
+            },
+            // 成功訊息顯示設定
+            alert_cancel(id, index) {
+                const vm = this;
+                const alert_msg = document.querySelectorAll('.alert_msg');
+                vm.alert_status = id;
+                alert_msg.forEach((item, index_alert) => {
+                    if (index_alert == index) {
+                        item.style.opacity = '1';
+                    }
+                })
+                setTimeout(() => {
+                    alert_msg.forEach((item, index_alert) => {
+                        if (index_alert == index) {
+                            item.style.opacity = '0';
+                        }
+                    })
+                    vm.alert_status = '';
+                }, 2000);
+            },
         },
         computed: {
             filter_data() {
@@ -159,18 +214,6 @@
         },
         created() {
             this.get_product_list();
-
-            window.onload = () => {
-                const checklabel = document.querySelector('label');
-                const checkboxparent = document.querySelector('#product_page_category_switch');
-                const checkchildren = document.querySelectorAll('input[name=child]');
-                console.log(checkchildren);
-                checklabel.addEventListener('click', () => {
-                    for (let i = 0; i < checkchildren.length; i++) {
-                        checkchildren[i].checked = !checkboxparent.checked;
-                    }
-                })
-            }
         }
     }
 </script>
@@ -420,12 +463,18 @@
 
         // 滑鼠摸到才顯示 加入購物車的 ICON
         @at-root &:hover .card_item_icon {
-            display: block;
+            opacity: 1;
+        }
+
+        // 轉圈圈的時候會維持顯示
+        .card_item_icon_loading {
+            opacity: 1;
+            transition: .3s;
         }
 
         // 加入購物車的 ICON
         @at-root .card_item_icon {
-            display: none;
+            opacity: 0;
             background: #fffec2;
             color: #620062;
             font-size: 1.5em;
@@ -489,6 +538,30 @@
                 color: #9c00009a;
                 margin: 0 10px 0 0;
             }
+        }
+    }
+
+    // 成功加入跳出訊息
+    .alert_msg {
+        width: 160px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        text-align: center;
+        background: #baf8ca;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100;
+        transition: .3s;
+
+        span {
+            color: #0b9c43;
+            font-size: 15px;
+            letter-spacing: 5px;
         }
     }
 </style>

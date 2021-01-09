@@ -10,13 +10,9 @@
             <div class="row">
                 <div class="col">
                     <router-view></router-view>
-                    <!-- <ShopLocation></ShopLocation> -->
                 </div>
             </div>
 
-            <!-- <div class="row">
-<ShopDetail></ShopDetail>
-            </div> -->
         </div>
     </div>
 </template>

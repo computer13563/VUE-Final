@@ -28,7 +28,7 @@
 
                     <div class="main_nav_section_item">
                         <router-link :to="{name:''}">最新訊息</router-link>
-                        <router-link :to="{name:'Allproduct'}">所有商品</router-link>
+                        <router-link :to="{name:'AllProduct'}">所有商品</router-link>
                         <router-link :to="{name:''}">訂購流程</router-link>
                         <router-link :to="{name:'Shop'}">門市地點</router-link>
                         <router-link :to="{name:'Contact'}">聯絡我們</router-link>

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../views/Home.vue'
 import Homepage from '../views/Homepage.vue'
 import Login from '@/components/login.vue'
 import Dashboard from '@/views/DashBoard.vue'
@@ -10,15 +9,15 @@ import Coupon from '@/components/back_end/Coupon_dashboard.vue'
 import Order from '@/components/back_end/Order_dashboard.vue'
 
 // 首頁的內容
-import Indexcontent from '@/components/front_end/indexcontent.vue'
+import Indexcontent from '@/components/front_end/index_content.vue'
 // 所有商品頁面
 import Allproduct from '@/components/front_end/all_product.vue'
 // 購物車
-import Cart from '@/components/front_end/cart.vue'
+import Cart from '@/components/front_end/cart_page.vue'
 // 結帳填寫收件人
-import Recipient from '@/components/front_end/recipient.vue'
+import Recipient from '@/components/front_end/recipient_page.vue'
 // 結帳頁面
-import Checkout from '@/components/front_end/checkout.vue'
+import Checkout from '@/components/front_end/checkout_page.vue'
 // 聯絡我們頁面
 import Contact from '@/components/front_end/contact_page.vue'
 // 商店列表頁面
@@ -34,17 +33,17 @@ import {
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/index',
-    name: 'Homepage',
+    path: '/',
+    name: '',
     component: Homepage,
     children: [{
         path: '',
-        name: 'Indexcontent',
+        name: 'IndexContent',
         component: Indexcontent
       },
       {
         path: 'allproduct',
-        name: 'Allproduct',
+        name: 'AllProduct',
         component: Allproduct
       },
     ]
@@ -87,12 +86,6 @@ const routes = [{
       }
     ]
   },
-
-  {
-    path: '/carousel',
-    name: 'Carousel',
-    component: Carousel,
-  },
   {
     path: '/login',
     name: 'Login',
@@ -100,7 +93,7 @@ const routes = [{
   },
   {
     path: '/admin',
-    name: 'Dashboard',
+    name: '',
     component: Dashboard,
     children: [{
         path: '',

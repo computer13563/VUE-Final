@@ -1,7 +1,6 @@
 <template>
     <div>
 
-        <!-- <form @submit.prevent="check_out_page"> -->
         <!-- 輸入收件人頁面的最外層 -->
         <section class="recipient_container">
 
