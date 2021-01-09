@@ -13,20 +13,38 @@
 
                 <form class="recipient_form" @submit.prevent="check_out_page">
                     <div class="form-group">
-                        <label for="user_email">Email</label>
+                        <label for="user_email">收件人電子郵件信箱</label>
                         <input type="text" required id="user_email" v-model="order.data.user.email">
+                        <label for="" v-if="!check_status.email">請輸入正確信箱</label>
                     </div>
                     <div class="form-group">
                         <label for="user_name">收件人姓名</label>
                         <input type="text" required id="user_name" v-model="order.data.user.name">
+                        <label for="" v-if="!check_status.name">請輸入正確姓名</label>
                     </div>
                     <div class="form-group">
-                        <label for="user_tel">收件人電話</label>
+                        <label for="user_tel">收件人手機號碼</label>
                         <input type="text" required id="user_tel" v-model="order.data.user.tel">
+                        <label for="" v-if="!check_status.tel">請輸入正確手機號碼</label>
                     </div>
                     <div class="form-group">
+
                         <label for="user_address">收件人地址</label>
-                        <input type="text" required id="user_address" v-model="order.data.user.address">
+
+                        <select name="" id="" v-model="city" class="address_select">
+                            <option value="" disabled>請選擇城市</option>
+                            <option :value="item.city" v-for="(item,index) in city_filter" :key="index">{{item.city}}
+                            </option>
+                        </select>
+
+                        <select name="" id="" v-model="town" class="address_select">
+                            <option value="" disabled>請選擇行政區</option>
+                            <option :value="item.district" v-for="(item,index) in town_filter" :key="index">
+                                {{item.district}}</option>
+                        </select>
+
+                        <input type="text" required id="user_address" v-model="origin_address">
+                        <label for="" v-if="!check_status.address">請輸入正確地址</label>
                     </div>
                     <div class="form-group">
                         <label for="remark">備註</label>
@@ -53,8 +71,11 @@
 <script>
     import NavbarSecStyle from '@/components/front_end/navbar/navbar_sec_style.vue'
     import {
-        check_out_page_api
+        check_out_page_api,
     } from '@/components/api/cus_api.js'
+    import {
+        zipcode
+    } from '@/components/api/zipcode.js'
 
     export default {
         name: 'Recipient',
@@ -69,16 +90,27 @@
                             name: '',
                             email: '',
                             tel: '',
-                            address: ''
+                            address: '',
                         },
                         message: ''
                     }
                 },
+                check_status: {
+                    name: true,
+                    email: true,
+                    tel: true,
+                    address: true
+                },
+                zipcode: {},
+                city: '',
+                town: '',
+                origin_address: ''
             }
         },
         methods: {
             check_out_page() {
                 const vm = this;
+                vm.order.data.user.address = vm.city + vm.town + vm.origin_address;
                 check_out_page_api(vm.order)
                     .then(res => {
                         console.log(res);
@@ -86,7 +118,85 @@
                             vm.$router.push(`/checkout/${res.data.orderId}`);
                         }
                     })
+            },
+            check_name(name) {
+                const name_format = /^[u4e00-u9fa5]{0,30}$/;
+                return name_format.test(name);
+            },
+            check_email(email) {
+                const email_format = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+                return email_format.test(email);
+            },
+            check_tel(tel) {
+                const tel_format = /^09\d{8}/;
+                return tel_format.test(tel);
+            },
+            check_address(address) {
+                const address_format = /^([u4e00-u9fa5]|[a-zA-Z]){0,30}$/;
+                return address_format.test(address);
+            },
+            // 跨域問題
+            // zipcode1(){
+            //     code().then(res => {
+            //         console.log(res);
+            //     })
+            // }
+        },
+        computed: {
+            city_filter() {
+                const vm = this;
+                const city_set = new Set();
+                const result = vm.zipcode.filter(item => {
+                    if (!city_set.has(item.city)) {
+                        return city_set.add(item.city)
+                    } else {
+                        false;
+                    }
+                })
+                return result;
+            },
+            town_filter() {
+                const vm = this;
+                if (vm.city) {
+                    return vm.zipcode.filter(item => {
+                        return item.city.match(vm.city);
+                    })
+                }
             }
+        },
+        watch: {
+            'order.data.user.email': function (newval) {
+                if (this.check_email(newval)) {
+                    this.check_status.email = true;
+                } else {
+                    this.check_status.email = false;
+                }
+            },
+            'order.data.user.tel': function (newval) {
+                if (this.check_tel(newval)) {
+                    this.check_status.tel = true;
+                } else {
+                    this.check_status.tel = false;
+                }
+            },
+            'order.data.user.name': function (newval) {
+                if (this.check_name(newval)) {
+                    this.check_status.name = true;
+                } else {
+                    this.check_status.name = false;
+                }
+            },
+            'origin_address': function (newval, oldval) {
+                if (this.check_address(newval)) {
+                    this.check_status.name = true;
+                } else {
+                    this.check_status.name = false;
+                }
+            }
+        },
+        created() {
+            this.zipcode = zipcode.data;
+            console.log(this.zipcode);
         }
     }
 </script>
@@ -139,11 +249,27 @@
                 }
             }
 
+            // 城市行政區下拉式選單
+            .address_select {
+                border: #b0bec5 2px solid;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 0 20px 10px 0;
+                width: 150px;
+                height: 50px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            // 備註
             textarea {
                 padding: 10px 0 5px 15px;
                 height: 100px;
             }
 
+            // 送出資料按紐
             button {
                 width: 100%;
                 margin-top: 40px;
