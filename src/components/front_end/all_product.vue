@@ -106,9 +106,6 @@
 
     export default {
         name: 'all_product',
-        components: {
-            AlertMsg
-        },
         data() {
             return {
                 products: {},

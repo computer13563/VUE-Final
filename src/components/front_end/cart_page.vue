@@ -25,7 +25,7 @@
                         <!-- 購物車裡面沒東西要顯示的東西 -->
                         <div class="cart_col nothing" v-if="cart.carts !== undefined && cart.carts.length < 1">
                             <span>目前購物車沒東西</span>
-                            <button>放點東西進購物車</button>
+                            <button @click.prevent="to_product_page">放點東西進購物車</button>
                         </div>
 
                         <!-- 商品內容 -->
@@ -227,6 +227,9 @@
             },
             to_recipient_page() {
                 this.$router.push('/recipient');
+            },
+            to_product_page(){
+                this.$router.push({name:'AllProduct'});
             }
         },
         created() {

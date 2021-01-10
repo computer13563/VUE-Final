@@ -21,7 +21,7 @@
 
                 <section class="main_nav_section">
 
-                    <router-link to="/index" class="logo" @click.native="go_top">
+                    <router-link to="/" class="logo" @click.native="go_top">
                         <i class="fas fa-feather-alt "></i>
                         <span> Dessert</span>
                     </router-link>

@@ -24,6 +24,7 @@ import Contact from '@/components/front_end/contact_page.vue'
 import Shop from '@/components/front_end/shop_page.vue'
 import ShopLocation from '@/components/front_end/shop/shop_location.vue'
 import ShopDetail from '@/components/front_end/shop/shop_detail.vue'
+import Page404 from '@/components/front_end/page404.vue'
 
 import Carousel from '@/components/front_end/homepage/carousel.vue'
 
@@ -34,8 +35,9 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-    name: '',
+    name: 'Homepage',
     component: Homepage,
+    redirect:'/',
     children: [{
         path: '',
         name: 'IndexContent',
@@ -126,8 +128,13 @@ const routes = [{
     ]
   },
   {
-    path: '*?',
-    redirect: '/index'
+    path:'/page404',
+    name:'Page404',
+    component:Page404
+  },
+  {
+    path: '*',
+    redirect: '/page404',
   }
 ]
 

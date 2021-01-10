@@ -129,7 +129,7 @@
                     })
             },
             back_product_page(){
-                this.$router.push('/index/allproduct');
+                this.$router.push({name:'AllProduct'});
             }
         },
         created() {
