@@ -21,7 +21,8 @@
                     <tr v-for="item in coupon" :key="item.id">
                         <td>{{item.title}}</td>
                         <td>{{item.percent}}</td>
-                        <td>{{item.due_date}}</td>
+                        <td>{{due_date_in_coupon(item.due_date)}}</td>
+                        <!-- <td>{{item.due_date}}</td> -->
                         <td>{{item.code}}</td>
                         <td>{{item.is_enabled}}</td>
                         <td>
@@ -39,18 +40,27 @@
         <!-- modal -->
         <div class="modal" id="modal">
             <div class="modal-content" id="modal-content">
+
                 <label for="coupon_title">優惠券標題</label>
                 <input type="text" id="coupon_title" v-model="title">
+
                 <label for="coupon_is_enabled">是否啟用</label>
                 <input type="text" id="coupon_is_enabled" v-model="is_enabled">
+
                 <label for="coupon_percent">優惠券折扣</label>
                 <input type="text" id="coupon_percent" v-model="percent">
+
                 <label for="coupon_due_date">優惠券到期日</label>
-                <input type="text" id="coupon_due_date" v-model="due_date">
+                <input type="text" id="coupon_due_date" v-model="due_date" placeholder="格式為yyyymmdd">
+                <label class="date_format" for="coupon_due_date" v-if="!check_date">時間格式錯誤</label>
+
                 <label for="coupon_code">CODE</label>
                 <input type="text" id="coupon_code" v-model="code">
+
                 <p>
-                    <button class="btn btn-outline-winered" id="submit_btn" @click.prevent="submit">確定</button>
+                    <button class="btn btn-outline-success" id="submit_btn" @click.prevent="submit">
+                        <i class="fas fa-spinner fa-spin" v-if="submit_loading"></i>
+                        確定</button>
                     <button class="btn btn-outline-winered" id="close" @click.prevent="closemodal">取消</button>
                 </p>
             </div>
@@ -148,6 +158,10 @@
                     page
                 });
             },
+            // 把顯示在畫面時間戳記改成一般時間格式
+            due_date_in_coupon: function (due_date) {
+                return new Date(parseInt(due_date)).toLocaleDateString();
+            },
         },
         computed: {
             title: {
@@ -176,7 +190,7 @@
             },
             due_date: {
                 get() {
-                    return this.$store.state.coupon_module.temp_coupon.due_date;
+                    return this.$store.state.coupon_module.trans_due_date;
                 },
                 set(value) {
                     this.$store.commit('coupon_module/TEMP_COUPON_DUE_DATE', value);
@@ -190,7 +204,10 @@
                     this.$store.commit('coupon_module/TEMP_COUPON_CODE', value);
                 }
             },
-            ...mapGetters('coupon_module', ['coupon', 'temp_coupon', 'isNew']),
+
+            ...mapGetters('coupon_module', ['coupon', 'temp_coupon', 'isNew', 'check_date', 'submit_loading',
+                'trans_due_date'
+            ]),
             ...mapGetters(['isLoading']),
         },
         created() {
@@ -214,10 +231,10 @@
 
         @at-root .modal-content {
             width: 50%;
-            margin:40px auto;
+            margin: 40px auto;
             font-size: 20px;
             letter-spacing: 3px;
-            padding:0 20px;
+            padding: 0 20px;
 
             label {
                 padding: 10px 10px;
