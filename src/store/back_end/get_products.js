@@ -6,6 +6,7 @@ import {
     del_products,
     upload_pic
 } from '@/components/api/dashboard_product_api';
+
 //不載入找不到modal
 import {
     Modal
@@ -42,6 +43,7 @@ export default {
     actions: {
         getsingle_page_product(context, page) {
             context.commit('LOADING', true, { root : true } );
+            const vm = this;
             getsingle_page_products(page)
                 .then(response => {
                     if (response.data.success) {

@@ -26,11 +26,10 @@ import ShopLocation from '@/components/front_end/shop/shop_location.vue'
 import ShopDetail from '@/components/front_end/shop/shop_detail.vue'
 import Page404 from '@/components/front_end/page404.vue'
 
-import Carousel from '@/components/front_end/homepage/carousel.vue'
-
 import {
   user_status
 } from '@/components/api/account_uploadpic_api.js'
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -97,9 +96,15 @@ const routes = [{
     path: '/admin',
     name: '',
     component: Dashboard,
+    meta: {
+      requiresAuth: true
+    },
     children: [{
         path: '',
-        redirect: 'products'
+        redirect: 'products',
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'products',
