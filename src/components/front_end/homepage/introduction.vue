@@ -44,7 +44,7 @@
             margin: -50px 0;
             position: relative;
             .introduction_img {
-                background: url('../../../assets/photos/chocolate-cake.png') right center/auto 100%;
+                background: url('../../../assets/photos/chocolate-cake.jpg') right center/auto 100%;
                 height: 400px;
                 clip-path: polygon(60% 0, 100% 0%, 100% 100%, 40% 100%);
                 border-radius: 0 30px 30px 0;
