@@ -16,9 +16,9 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cake.png" alt=""></div>
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-matte.png" alt=""></div>
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cupcake.png" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cake.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-matte.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cupcake.jpg" alt=""></div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
