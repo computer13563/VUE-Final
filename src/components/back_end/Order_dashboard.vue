@@ -13,12 +13,15 @@
             </thead>
             <tbody>
                 <tr v-for="item in order" :key="item.id">
-                    <td>{{item.create_at}}</td>
+                    <td>{{create_date(item.create_at)}}</td>
                     <td>{{item.user.email}}</td>
                     <td>
+                        <ol>
+
                         <li v-for="(product,key) in item.products" :key="key">
                             {{product.product.title}} : {{product.qty}} / {{product.product.unit}}
                         </li>
+                        </ol>
                     </td>
                     <td>{{item.total}}</td>
                     <td>
@@ -59,7 +62,10 @@
                         vm.order = res.data.orders;
                         vm.isLoading = false;
                     })
-            }
+            },
+            create_date: function (date) {
+                return new Date(parseInt(date*1000)).toLocaleDateString();
+            },
         },
         computed:{
             // ...mapGetters(['isLoading']),

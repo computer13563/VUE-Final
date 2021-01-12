@@ -85,6 +85,7 @@
         name: 'Coupon_dashboard',
         data() {
             return {
+                // 全部放到VUEX
                 // coupon:{},
                 // temp_coupon: {},
                 // isNew: false
@@ -238,6 +239,10 @@
 
             label {
                 padding: 10px 10px;
+            }
+
+            .date_format {
+                color: red;
             }
 
             input {
