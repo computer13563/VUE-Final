@@ -63,11 +63,11 @@
     }
 
     p {
-        width: 400px;
+        width: 300px;
         height: 100px;
-        font-size: 40px;
+        font-size: 25px;
         position: absolute;
-        bottom: 15vh;
+        bottom: 3vh;
         left: 0;
         right: 0;
         margin: auto;
@@ -75,7 +75,7 @@
 
     span {
         display: inline-block;
-        background: rgba(255, 255, 255, .5);
+        background: rgba(255, 255, 255, .3);
         border-radius: 10px;
         padding: 5px 20px;
         text-align: center;

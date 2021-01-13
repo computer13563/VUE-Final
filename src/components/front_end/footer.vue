@@ -39,7 +39,7 @@
                     <nav>
                         <router-link :to="{name:''}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 品牌故事</router-link>
                         <router-link :to="{name:'Contact' }"  @click.native="go_top"><i class="fas fa-chevron-right"></i> 聯絡我們</router-link>
-                        <router-link :to="{name:''}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 門市地點</router-link>
+                        <router-link :to="{name:'Shop'}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 門市地點</router-link>
                     </nav>
                 </div>
                 <div class="footer_item">

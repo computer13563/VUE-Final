@@ -12,18 +12,32 @@ import Order from '@/components/back_end/Order_dashboard.vue'
 import Indexcontent from '@/components/front_end/index_content.vue'
 // 所有商品頁面
 import Allproduct from '@/components/front_end/all_product.vue'
+
+// 消息頁面
+import News from '@/components/front_end/news_page.vue'
+// 全部消息
+import AllNews from '@/components/front_end/news/all_news.vue'
+// 消息詳細資訊
+import NewsDetail from '@/components/front_end/news/news_detail.vue'
+
 // 購物車
 import Cart from '@/components/front_end/cart_page.vue'
 // 結帳填寫收件人
 import Recipient from '@/components/front_end/recipient_page.vue'
 // 結帳頁面
 import Checkout from '@/components/front_end/checkout_page.vue'
+
 // 聯絡我們頁面
 import Contact from '@/components/front_end/contact_page.vue'
+
 // 商店列表頁面
 import Shop from '@/components/front_end/shop_page.vue'
+// 商店地點
 import ShopLocation from '@/components/front_end/shop/shop_location.vue'
+// 商店詳細資訊頁面
 import ShopDetail from '@/components/front_end/shop/shop_detail.vue'
+
+// 404頁面
 import Page404 from '@/components/front_end/page404.vue'
 
 import {
@@ -32,11 +46,13 @@ import {
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  // 首頁以及產品頁面
+  {
     path: '/',
     name: 'Homepage',
     component: Homepage,
-    redirect:'/',
+    redirect: '/',
     children: [{
         path: '',
         name: 'IndexContent',
@@ -49,49 +65,74 @@ const routes = [{
       },
     ]
   },
+  // 消息頁面
+  {
+    path: '/news',
+    name: 'News',
+    component: News,
+    redirect:'/news',
+    children:[
+      {
+        path:'',
+        name:'AllNews',
+        component:AllNews
+      },
+      {
+        path:':news_id',
+        name:'NewsDetail',
+        component:NewsDetail
+      }
+    ]
+  },
+  // 購物車
   {
     path: '/cart',
     name: 'Cart',
     component: Cart
   },
+  // 收件人頁面
   {
     path: '/recipient',
     name: 'Recipient',
     component: Recipient
   },
+  // 結帳頁面
   {
     path: '/checkout/:order_id',
     name: 'Checkout',
     component: Checkout
   },
-
+  // 聯絡頁面
   {
     path: '/contact',
     name: 'Contact',
     component: Contact
   },
+  // 商店位置跟商店詳細
   {
     path: '/shop',
     name: 'Shop',
     component: Shop,
-    redirect:'/shop',
+    redirect: '/shop',
     children: [{
         path: '',
         name: 'ShopLocation',
-        component:ShopLocation
+        component: ShopLocation
       },
       {
-        path:':shop_id',
-        name:'ShopDetail',
-        component:ShopDetail
+        path: ':shop_id',
+        name: 'ShopDetail',
+        component: ShopDetail
       }
     ]
   },
+  // 登入頁面
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
+  // 後台頁面
   {
     path: '/admin',
     name: '',
@@ -132,10 +173,11 @@ const routes = [{
       },
     ]
   },
+  // 404頁面
   {
-    path:'/page404',
-    name:'Page404',
-    component:Page404
+    path: '/page404',
+    name: 'Page404',
+    component: Page404
   },
   {
     path: '*',

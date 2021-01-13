@@ -16,9 +16,9 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cake.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-matte.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cupcake.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cake-new.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-cupcake-new.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="@/assets/photos/chocolate-matte-new.jpg" alt=""></div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
@@ -53,8 +53,7 @@
     export default {
         name: 'Carousel',
         data() {
-            return {
-            }
+            return {}
         },
         methods: {
             rollpic() {
@@ -199,17 +198,22 @@
 </script>
 
 <style scoped lang="scss">
-    *{
+    * {
         padding: 0;
         margin: 0;
     }
+
     .swiper-container {
         width: 100%;
+        max-width: 1500px;
         height: calc(100vh - 40px);
+        max-height: 843.75px;
 
         img {
-            width: 100%;
+            width: 100vw;
+            max-width: 1500px;
             height: 100%;
+            max-height: 843.75px;
         }
     }
 

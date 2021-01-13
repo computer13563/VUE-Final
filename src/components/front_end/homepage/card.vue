@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                     <figure class="card">
-                        <img src="../../../assets/photos/chocolate-glossy.jpg" alt="">
+                        <img src="../../../assets/photos/chocolate-glossy-new.jpg" alt="">
                         <div class="card_item_product_name">【Mont Blanc】</div>
                         <figcaption>
                             <h2>
@@ -49,7 +49,7 @@
                         </div>
                     </figure>
                     <figure class="card">
-                        <img src="../../../assets/photos/chocolate-matte.jpg" alt="">
+                        <img src="../../../assets/photos/chocolate-matte-new.jpg" alt="">
                         <div class="card_item_product_name">【Crème brûlée】</div>
                         <figcaption>
                             <h2>

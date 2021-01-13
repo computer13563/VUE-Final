@@ -9,7 +9,7 @@
                 <div class="col-12 col-md-12 col-lg-3">
                     <div class="cus_card w-100 position-relative" @click.prevent="go_product_page">
                         <!-- <img src="https://picsum.photos/400/300?random=15" alt="" class="w-100 cus_img"> -->
-                        <img src="../../assets/photos/chocolate-cupcake.png" alt="" class="w-100 cus_img">
+                        <img src="../../assets/photos/chocolate-cupcake-new.jpg" alt="" class="w-100 cus_img">
                         <div class="cus_card_slogan fw-bold d-flex flex-column justify-content-center position-absolute top-0 bottom-0 left-0 right-0">
                             <h2 class="fs-3">暢銷系列</h2>
                             <h2 class="fs-3">Bestseller</h2>
@@ -19,7 +19,7 @@
                 <div class="col-12 col-md-12 col-lg-3">
                     <div class="cus_card w-100 position-relative" @click.prevent="go_product_page">
                         <!-- <img src="https://picsum.photos/400/300?random=20" alt="" class="w-100 cus_img"> -->
-                        <img src="../../assets/photos/chocolate-glossy.png" alt="" class="w-100 cus_img">
+                        <img src="../../assets/photos/chocolate-glossy-new.jpg" alt="" class="w-100 cus_img">
                         <div class="cus_card_slogan fw-bold d-flex flex-column justify-content-center position-absolute top-0 bottom-0 left-0 right-0">
                             <h2 class="fs-3">嚴選系列</h2>
                             <h2 class="fs-3">Collections</h2>
@@ -29,7 +29,7 @@
                 <div class="col-12 col-md-12 col-lg-3">
                     <div class="cus_card w-100 position-relative" @click.prevent="go_product_page">
                         <!-- <img src="https://picsum.photos/400/300?random=25" alt="" class="w-100 cus_img"> -->
-                        <img src="../../assets/photos/macaron.png" alt="" class="w-100 cus_img">
+                        <img src="../../assets/photos/macaron.jpg" alt="" class="w-100 cus_img">
                         <div class="cus_card_slogan fw-bold d-flex flex-column justify-content-center position-absolute top-0 bottom-0 left-0 right-0 m-auto">
                             <h2 class="fs-3">新品系列</h2>
                             <h2 class="fs-3">New Arrival</h2>
