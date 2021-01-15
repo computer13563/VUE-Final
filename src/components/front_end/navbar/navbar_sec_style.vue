@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="container_nav_sec_style container_nav_background" id="test">
+
             <nav class="main_nav">
+
                 <section class="main_nav_section">
 
                     <router-link :to="{name:'Login'}">
@@ -16,6 +18,7 @@
                         <button><i class="fas fa-search"></i></button>
                     </form>
                 </section>
+
                 <section class="main_nav_section">
 
                     <router-link to="/" class="logo" @click.native="go_top">
@@ -24,15 +27,18 @@
                     </router-link>
 
                     <div class="main_nav_section_item">
-                        <router-link :to="{name:''}">最新訊息</router-link>
+                        <router-link :to="{name:'News'}">最新訊息</router-link>
                         <router-link :to="{name:'AllProduct'}">所有商品</router-link>
-                        <router-link :to="{name:''}">訂購流程</router-link>
+                        <router-link :to="{name:'ShoppingProcessPage'}">購物流程</router-link>
                         <router-link :to="{name:'Shop'}">門市地點</router-link>
                         <router-link :to="{name:'Contact'}">聯絡我們</router-link>
-                        <router-link :to="{name:''}">關於我們</router-link>
+                        <router-link :to="{name:'AboutUs'}">關於我們</router-link>
                     </div>
+
                 </section>
+
             </nav>
+            
         </div>
     </div>
 </template>

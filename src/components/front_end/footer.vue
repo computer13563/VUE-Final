@@ -1,14 +1,17 @@
 <template>
     <div>
         <div class="container-fluid">
-            <!-- row-cols-*有待理解 3顯示2 5顯示4 ????? -->
+
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 row-cols-xl-6">
+
                 <div class="footer_item">
                     <h4>最新消息</h4>
                     <nav>
                         <a href=""><i class="fas fa-chevron-right"></i> 最新消息</a>
+                        <router-link :to="{name:'News'}"></router-link>
                     </nav>
                 </div>
+
                 <div class="footer_item">
                     <h4>所有商品</h4>
                     <nav>
@@ -34,20 +37,23 @@
                         </router-link>
                     </nav>
                 </div>
+
                 <div class="footer_item">
                     <h4>關於我們</h4>
                     <nav>
-                        <router-link :to="{name:''}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 品牌故事</router-link>
+                        <router-link :to="{name:'AboutUs'}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 品牌故事</router-link>
                         <router-link :to="{name:'Contact' }"  @click.native="go_top"><i class="fas fa-chevron-right"></i> 聯絡我們</router-link>
                         <router-link :to="{name:'Shop'}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 門市地點</router-link>
                     </nav>
                 </div>
+
                 <div class="footer_item">
                     <h4>更多幫助</h4>
                     <nav>
-                        <a href=""><i class="fas fa-chevron-right"></i> 訂購流程</a>
+                        <router-link :to="{name:'ShoppingProcessPage'}" @click.native="go_top"><i class="fas fa-chevron-right"></i> 購物流程</router-link>
                     </nav>
                 </div>
+
                 <div class="footer_item">
                     <h4>關注我們</h4>
                     <nav>
@@ -57,9 +63,11 @@
                     </nav>
                 </div>
             </div>
+
             <div class="copyright">
                 Copyright &copy; 2020 虛擬甜點
             </div>
+
         </div>
     </div>
 </template>

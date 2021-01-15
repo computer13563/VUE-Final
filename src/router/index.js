@@ -20,12 +20,18 @@ import AllNews from '@/components/front_end/news/all_news.vue'
 // 消息詳細資訊
 import NewsDetail from '@/components/front_end/news/news_detail.vue'
 
+// 關於我們頁面
+import AboutUs from '@/components/front_end/about/about_us.vue'
+
 // 購物車
 import Cart from '@/components/front_end/cart_page.vue'
 // 結帳填寫收件人
 import Recipient from '@/components/front_end/recipient_page.vue'
 // 結帳頁面
 import Checkout from '@/components/front_end/checkout_page.vue'
+
+// 訂購流程頁面
+import ShoppingProcessPage from '@/components/front_end/shopping_process_page.vue'
 
 // 聯絡我們頁面
 import Contact from '@/components/front_end/contact_page.vue'
@@ -83,6 +89,18 @@ const routes = [
         component:NewsDetail
       }
     ]
+  },
+  // 購物流程頁面
+  {
+    path:'/process',
+    name:'ShoppingProcessPage',
+    component:ShoppingProcessPage
+  },
+  // 關於我們頁面
+  {
+    path:'/about',
+    name:'AboutUs',
+    component:AboutUs
   },
   // 購物車
   {

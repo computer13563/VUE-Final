@@ -15,11 +15,11 @@
                     </p>
 
                     <p class="nav_item">
-                        <router-link :to="{name:''}">最新訊息</router-link>
+                        <router-link :to="{name:'News'}">最新訊息</router-link>
                         <router-link :to="{name:'AllProduct'}">所有商品</router-link>
                         <router-link :to="{name:'Shop'}">門市地點</router-link>
                         <router-link :to="{name:'Contact'}">聯絡我們</router-link>
-                        <router-link :to="{name:''}">關於我們</router-link>
+                        <router-link :to="{name:'AboutUs'}">關於我們</router-link>
                         <router-link :to="{name:'Login'}">會員登入</router-link>
                     </p>
 
