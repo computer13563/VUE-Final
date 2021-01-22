@@ -51,7 +51,7 @@
 
                                 <!-- 商品圖片 -->
                                 <div class="card_item_img">
-                                    <img :src="item.image" alt="" class="">
+                                    <img :src="item.image" alt="">
                                 </div>
 
                                 <!-- 商品中間的購物車圖示 -->
@@ -77,8 +77,16 @@
                                         </p>
                                     </div>
 
-                                    <h3 v-if="item.description">{{item.description}}</h3>
-                                    <h3 v-else>產品說明產品說明產品說明產品說明產品說明</h3>
+                                    <!-- <h3 v-if="item.description">{{item.description}}</h3> -->
+                                    <!-- <h3 v-else>產品說明產品說明產品說明產品說明產品說明</h3> -->
+                                    <div class="view_more" @click="go_product_detail(item.id)">
+                                        查看更多
+                                        <p class="arrow">
+                                            <svg>
+                                                <polyline points="0,10 30,10 20,5" />
+                                            </svg>
+                                        </p>
+                                    </div>
 
                                 </div>
                             </div>
@@ -151,7 +159,7 @@
                         item.classList.add('card_item_icon_loading');
                     }
                 })
-                
+
                 // 轉圈圈的出現
                 vm.cart_loading = id;
                 add_to_cart_api(cart)
@@ -168,6 +176,7 @@
                         vm.alert_cancel(id, index);
                     })
             },
+            // 過濾的字串
             get_text(text) {
                 const vm = this;
                 if (text === '蛋糕') {
@@ -196,6 +205,10 @@
                     vm.alert_status = '';
                 }, 2000);
             },
+            go_product_detail(product_id){
+                this.$router.push(`/product/${product_id}`);
+                window.scroll(0,0);
+            }
         },
         computed: {
             filter_data() {
@@ -534,6 +547,46 @@
 
                 color: #9c00009a;
                 margin: 0 10px 0 0;
+            }
+        }
+
+        // 查看更多
+        @at-root .view_more {
+            cursor: pointer;
+            display: inline-flex;
+            padding: 5px 10px;
+            font-size: 20px;
+            letter-spacing: 4px;
+            border: 1px solid #620062;
+            transition: .1s;
+
+            &:hover .arrow{
+                left:15px;
+            }
+
+            // 箭頭
+            @at-root .arrow {
+                width: 40px;
+                height: 20px;
+                position: relative;
+                top: 0;
+                bottom: 0;
+                left: 10px;
+                margin: auto;
+                transition: .3s;
+
+                // SVG畫箭頭
+                svg {
+                    height: 40px;
+                    width: 40px;
+                    position: absolute;
+
+                    polyline {
+                        fill: none;
+                        stroke: #620062;
+                        stroke-width: 1
+                    }
+                }
             }
         }
     }

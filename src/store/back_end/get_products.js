@@ -50,6 +50,7 @@ export default {
                         context.commit('PRODUCTS', response.data.products);
                         context.commit('PAGINATION', response.data.pagination);
                         context.commit('LOADING', false, { root : true } );
+                        console.log(response);
                     } else {
                         console.log(response);
                         context.commit('LOADING', false, { root : true } );

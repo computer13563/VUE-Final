@@ -41,7 +41,7 @@ const checkout = axios.create({
 });
 
 export const get_products_api = page=>getproducts.get(`/products?page=${page}`);
-export const product_detail_api = page=>productdetail.get(`/products?page=${page}`);
+export const product_detail_api = id=>productdetail.get(`/product/${id}`);
 export const add_to_cart_api = data=>addtocart.post(`/cart`,data);
 export const del_cart_info_api = id=>delcartinfo.delete(`/cart/${id}`);
 export const get_cart_list_api = ()=>getcartlist.get(`/cart`);

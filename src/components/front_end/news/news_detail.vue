@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <section class="container-fluid news_container">
+    <div class="clearfix">
+        <!-- <NavbarSixthStyle></NavbarSixthStyle> -->
+
+        <section class="container-fluid news_detail_container">
             <div class="row" v-for="item in filter_news" :key="item.id">
                 <div class="col-12 news_title">
                     <div>
@@ -35,12 +37,27 @@
                 </div>
             </div>
         </section>
+
+        <div class="container-fluid container_copyright">
+
+            <div class="row row_copyright">
+                <div class="col-12 copyright">
+                    Copyright &copy; 2020 虛擬甜點
+                </div>
+            </div>
+
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
+    import NavbarSixthStyle from '@/components/front_end/navbar/navbar_sixth_style.vue'
 
+    export default {
+        name: 'AllNews',
+        components: {
+            NavbarSixthStyle
+        },
         data() {
             return {
                 news: [{
@@ -93,6 +110,14 @@
         list-style: none;
     }
 
+    .clearfix {
+        overflow: auto;
+    }
+
+    .news_detail_container {
+        margin: 200px 0 0 0;
+    }
+
     .row {
         width: 100%;
 
@@ -132,7 +157,7 @@
             font-size: 20px;
             letter-spacing: 4px;
             line-height: 40px;
-            color:#565656;
+            color: #565656;
         }
     }
 
@@ -193,6 +218,20 @@
                     stroke: black;
                     stroke-width: 1
                 }
+            }
+        }
+    }
+
+    .container_copyright {
+        background: #222;
+
+        @at-root .row_copyright {
+            margin: auto;
+
+            @at-root .copyright {
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
             }
         }
     }

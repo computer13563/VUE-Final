@@ -1,5 +1,6 @@
 <template>
     <div>
+        <NavbarSeventhStyle></NavbarSeventhStyle>
         <section class="container-fluid container_about">
 
             <div class="row row_img_title">
@@ -57,27 +58,79 @@
 
                     </div>
                 </div>
+
+                <div class="row row_top">
+                    <p class="top" @click="go_top">
+                        <svg>
+                            <polyline points="15,30 30,15 45,30 " />
+                            <polyline points="15,40 30,25 45,40 " />
+                        </svg>
+                    </p>
+                </div>
+
+                <div class="row row_footer">
+                    <section class="footer_section">
+
+                        <router-link to="/" class="logo" @click.native="go_top">
+                            <i class="fas fa-feather-alt "></i>
+                            <span> Dessert</span>
+                        </router-link>
+
+                        <div class='tel_time_add'>
+                            <p>
+                                <span>客戶服務專線</span>
+                                <span>01-23456789</span>
+                            </p>
+
+                            <p>
+                                <span>公司地址</span>
+                                <span>臺灣 100 台北市中正區北平西路3號</span>
+                            </p>
+
+                            <p>
+                                <span>服務時間</span>
+                                <ul>
+                                    <li>週一~五 8:00~19:00</li>
+                                    <li>週六~日、例假日 9:00~18:00</li>
+                                    <li>365天全年無休</li>
+                                </ul>
+                                <!-- <span>，週六~日、例假日 9:00~18:00，365天全年無休</span> -->
+                            </p>
+                        </div>
+                    </section>
+
+                    <p class="copyright">
+                        Copyright &copy; 2020 虛擬甜點
+                    </p>
+                </div>
             </div>
         </section>
     </div>
 </template>
 
 <script>
-    export default {
+    import NavbarSeventhStyle from '@/components/front_end/navbar/navbar_seventh_style.vue'
 
+    export default {
+        components: {
+            NavbarSeventhStyle
+        },
         data() {
             return {}
         },
 
-        methods:{
-            to_contact(){
+        methods: {
+            to_contact() {
                 this.$router.push('/contact');
-                window.scroll(0,0);
+                window.scroll(0, 0);
             },
-            to_shop(){
+            to_shop() {
                 this.$router.push('/shop');
-                window.scroll(0,0);
+                window.scroll(0, 0);
             },
+            go_top(){
+                window.scroll(0,0);
+            }
         }
     }
 </script>
@@ -154,6 +207,7 @@
         .row_link {
             width: 100%;
             max-width: 1400px;
+            margin: 0 0 30px 0;
 
             @at-root .col_link {
                 width: 60%;
@@ -213,7 +267,7 @@
                 @at-root .link_contact {
                     &:hover svg {
                         position: absolute;
-                           transform: translateX(-10px);
+                        transform: translateX(-10px);
                     }
 
                     // 箭頭
@@ -250,6 +304,99 @@
                 }
 
 
+            }
+        }
+
+        .row_top {
+            .top {
+                cursor: pointer;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin:0 auto 20px;
+                transition: .3s;
+
+                //向上箭頭 
+                svg {
+                    height: 60px;
+                    width: 60px;
+
+                    polyline {
+                        transition: .3s;
+                        fill: none;
+                        stroke: black;
+                        stroke-width: 1
+                    }
+                }
+
+                &:hover {
+                    background: #000;
+
+                    polyline:nth-child(2) {
+                        stroke: #fff;
+                        transform: translate(0, -8px);
+                    }
+                }
+            }
+        }
+
+        .row_footer {
+            border-top: 1px solid #000;
+
+            @at-root .footer_section {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 20px 0;
+            }
+
+            a {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                color:#000;
+
+                i {
+                    font-size: 50px;
+                }
+
+                span {
+                    font-size: 25px;
+                }
+            }
+
+            @at-root .tel_time_add {
+                p {
+                    display: flex;
+                    letter-spacing: 5px;
+                    font-weight: 300;
+                    font-size: 16px;
+                }
+
+                span {
+                    margin:0 0 10px 10px;
+                }
+
+                span:nth-child(1) {
+                    width: 130px;
+                }
+                span:nth-child(2){
+                    border-left:1px solid #000;
+                    padding-left: 10px;
+                }
+
+                ul {
+                    padding-left: 10px;
+                    border-left:1px solid #000;
+                    margin:0 0 0 10px;
+                }
+            }
+
+            @at-root .copyright {
+                background: #222;
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
             }
         }
     }

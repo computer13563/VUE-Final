@@ -12,6 +12,8 @@ import Order from '@/components/back_end/Order_dashboard.vue'
 import Indexcontent from '@/components/front_end/index_content.vue'
 // 所有商品頁面
 import Allproduct from '@/components/front_end/all_product.vue'
+// 商品詳細
+import ProductDetail from '@/components/front_end/product/product_detail.vue'
 
 // 消息頁面
 import News from '@/components/front_end/news_page.vue'
@@ -70,6 +72,11 @@ const routes = [
         component: Allproduct
       },
     ]
+  },
+  {
+    path:'/product/:product_id',
+    name:'ProductDetail',
+    component:ProductDetail
   },
   // 消息頁面
   {
@@ -144,6 +151,7 @@ const routes = [
       }
     ]
   },
+
   // 登入頁面
   {
     path: '/login',
@@ -160,7 +168,7 @@ const routes = [
     },
     children: [{
         path: '',
-        redirect: 'products',
+        redirect: '/admin/products',
         meta: {
           requiresAuth: true
         }

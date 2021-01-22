@@ -56,9 +56,7 @@
 
             // 控制導覽列的畫面捲動
             window.onscroll = function () {
-                if (window.location.href === 'http://localhost:8080/#/' || 'http://localhost:8080/#/allproduct') {
-                    scrollFunction();
-                }
+                scrollFunction();
             };
 
             function scrollFunction() {
@@ -68,26 +66,35 @@
                 const header_search_input = document.querySelector('.header_search input');
                 const main_nav_section_item = document.querySelector('.main_nav_section_item');
                 const a = document.querySelectorAll('a');
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    container_nav.setAttribute('style',
-                        'border-bottom:1px solid #620062;background:rgba(255, 254, 194)');
-                    header_search_input.classList.add('input_border');
-                    header_search_btn.classList.add('button_border');
-                    header_search.style.color = '#620062';
-                    main_nav_section_item.style.color = '#620062';
-                    for (let i = 0; i < a.length; i++) {
-                        a[i].style.color = '#620062';
+                
+                // 判斷畫面上是不是有上面那些東西  有一個沒有就是不在這頁  不執行
+                if (container_nav && header_search && header_search_btn && header_search_input &&
+                    main_nav_section_item) {
+
+                    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                        container_nav.setAttribute('style',
+                            'border-bottom:1px solid #620062;background:rgba(255, 254, 194)');
+                        header_search_input.classList.add('input_border');
+                        header_search_btn.classList.add('button_border');
+                        header_search.style.color = '#620062';
+                        main_nav_section_item.style.color = '#620062';
+                        for (let i = 0; i < a.length; i++) {
+                            a[i].style.color = '#620062';
+                        }
+                    } else {
+                        container_nav.setAttribute('style',
+                            'background:linear-gradient(rgba(0, 0, 0, .8), rgba(255, 255, 255, 0))');
+                        header_search_input.classList.remove('input_border');
+                        header_search_btn.classList.remove('button_border');
+                        header_search.style.color = '#fff';
+                        main_nav_section_item.style.color = '#fff';
+                        for (let i = 0; i < a.length; i++) {
+                            a[i].style.color = '#fff';
+                        }
                     }
+
                 } else {
-                    container_nav.setAttribute('style',
-                        'background:linear-gradient(rgba(0, 0, 0, .8), rgba(255, 255, 255, 0))');
-                    header_search_input.classList.remove('input_border');
-                    header_search_btn.classList.remove('button_border');
-                    header_search.style.color = '#fff';
-                    main_nav_section_item.style.color = '#fff';
-                    for (let i = 0; i < a.length; i++) {
-                        a[i].style.color = '#fff';
-                    }
+                    return
                 }
             }
         }

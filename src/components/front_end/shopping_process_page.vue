@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <NavbarFifthStyle></NavbarFifthStyle>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col_process">
@@ -182,7 +182,7 @@
                             </span>
                         </li>
                     </ol>
-                    
+
                 </div>
             </div>
 
@@ -205,10 +205,12 @@
 </template>
 
 <script>
+    import NavbarFifthStyle from '@/components/front_end/navbar/navbar_fifth_style.vue'
+
     export default {
 
         components: {
-
+            NavbarFifthStyle
         },
 
         data() {
@@ -386,4 +388,6 @@
         background: #191970;
         text-align: center;
     }
+
+    // #b38112
 </style>

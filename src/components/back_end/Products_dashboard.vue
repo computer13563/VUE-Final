@@ -78,7 +78,7 @@
                                 <div class="form-group">
                                     <label for="image">輸入圖片網址</label>
                                     <input type="text" class="form-control" id="image" placeholder="請輸入圖片連結"
-                                        v-model="tempproduct.imageUrl">
+                                        v-model="tempproduct.image">
                                 </div>
                                 <div class="form-group">
                                     <label for="customFile">或 上傳圖片
@@ -87,8 +87,7 @@
                                     <input type="file" id="customFile" class="form-control" ref="files"
                                         @change="uploadpic">
                                 </div>
-                                <img img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
-                                    class="img-fluid" alt="" :src="tempproduct.imageUrl">
+                                <img class="img-fluid" alt="" :src="tempproduct.image">
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
@@ -148,7 +147,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" @click.prevent="create_or_edit_product">確認</button>
+                        <button type="button" class="btn btn-primary"
+                            @click.prevent="create_or_edit_product(pagination.current_page)">確認</button>
                     </div>
                 </div>
             </div>
@@ -191,9 +191,12 @@
     import {
         Modal
     } from 'bootstrap';
-    
+
     // mapaction只能用不帶入參數的
-    import {mapGetters,mapActions} from 'vuex';
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex';
 
     export default {
         name: 'Products_dashboard',
@@ -209,7 +212,7 @@
                 // isLoading:false,
                 // 這裡要放一個變數給新建立的MODAL物件  不然開會是一個物件  關會是一個物件 兩個沒關係 會關不掉
                 modal: '',
-                file_uploading:false
+                file_uploading: false
             };
         },
         methods: {
@@ -228,7 +231,7 @@
                 //             console.log(response);
                 //         }
                 //     });
-                this.$store.dispatch('products_module/getsingle_page_product',page);
+                this.$store.dispatch('products_module/getsingle_page_product', page);
             },
             openmodal(isNew, item) {
                 const vm = this;
@@ -244,7 +247,7 @@
                 // this.$store.dispatch('modal/openmodal',{isNew, item});
                 // this.modal.show();
             },
-            create_or_edit_product() {
+            create_or_edit_product(current_page) {
                 const vm = this;
                 if (vm.isNew) {
                     create_product({
@@ -267,7 +270,7 @@
                         .then(response => {
                             if (response.data.success) {
                                 vm.modal.hide();
-                                vm.getsingle_page_product();
+                                vm.getsingle_page_product(current_page);
                             } else {
                                 console.log('update fail.');
                                 vm.modal.hide();
@@ -291,7 +294,7 @@
                 upload_pic(formdata).then(response => {
                     if (response.data.success) {
                         vm.$set(vm.tempproduct, 'imageUrl', response.data.imageUrl);
-                vm.file_uploading = false;
+                        vm.file_uploading = false;
                     }
                 });
             }
@@ -306,10 +309,10 @@
             // pagination(){
             //     return this.$store.state.pagination;
             // }
-            
+
             //因為把模組內的東西全部變區域變數   所以要加上模組名稱
             ...mapGetters(['isLoading']),
-            ...mapGetters('products_module',['products','pagination']),
+            ...mapGetters('products_module', ['products', 'pagination']),
             //modal.show待解決
             // ...mapGetters('modal',['tempproduct','isNew','modal']),
         },
