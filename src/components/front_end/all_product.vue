@@ -51,7 +51,9 @@
 
                                 <!-- 商品圖片 -->
                                 <div class="card_item_img">
-                                    <img :src="item.image" alt="">
+                                    <!-- <img :src="item.image" alt=""> -->
+                                    <p class="card_item_img_bg"
+                                        :style="{background:`url(${item.image}) center center/100% no-repeat`}"></p>
                                 </div>
 
                                 <!-- 商品中間的購物車圖示 -->
@@ -134,13 +136,11 @@
                 const new_category = new Set();
                 get_products_api(page)
                     .then(res => {
-                        console.log(res);
                         vm.products = res.data.products;
                         vm.products.forEach(item => {
                             new_category.add(item.category);
                         })
                         vm.categories = [...new_category];
-                        console.log(vm.categories);
                         vm.isLoading = false;
                     })
             },
@@ -205,10 +205,10 @@
                     vm.alert_status = '';
                 }, 2000);
             },
-            go_product_detail(product_id){
+            go_product_detail(product_id) {
                 this.$router.push(`/product/${product_id}`);
-                window.scroll(0,0);
-            }
+                window.scroll(0, 0);
+            },
         },
         computed: {
             filter_data() {
@@ -224,7 +224,7 @@
         },
         created() {
             this.get_product_list();
-        }
+        },
     }
 </script>
 
@@ -457,18 +457,29 @@
             overflow: hidden;
             position: relative;
 
-            @at-root & img {
-                display: block;
+            @at-root .card_item_img_bg {
                 width: 100%;
                 height: 100%;
                 transform: scale(1, 1);
                 transition: .3s;
 
                 &:hover {
-                    border-radius: 20px;
                     transform: scale(1.2, 1.2);
                 }
             }
+
+            // @at-root & img {
+            //     display: block;
+            //     width: 100%;
+            //     height: 100%;
+            //     transform: scale(1, 1);
+            //     transition: .3s;
+
+            //     &:hover {
+            //         border-radius: 20px;
+            //         transform: scale(1.2, 1.2);
+            //     }
+            // }
         }
 
         // 滑鼠摸到才顯示 加入購物車的 ICON
@@ -528,6 +539,7 @@
             border: 2px solid transparent;
             border-radius: 20px;
 
+            // 商品標題跟價錢的div
             & div:nth-child(1) {
                 margin-bottom: 20px;
                 padding-bottom: 20px;
@@ -537,16 +549,25 @@
                 text-align: center;
             }
 
+            // 商品標題
+            h2 {
+                width: 70%;
+                text-align: left;
+                line-height: 30px;
+                letter-spacing: 3px;
+            }
+
+            // 價格的span
             span {
                 font-size: 1.5em;
                 font-weight: bold;
+                display: block;
             }
 
+            // 如果有打折就把原價畫掉
             span:nth-child(1) {
                 text-decoration: line-through;
-
                 color: #9c00009a;
-                margin: 0 10px 0 0;
             }
         }
 
@@ -560,8 +581,8 @@
             border: 1px solid #620062;
             transition: .1s;
 
-            &:hover .arrow{
-                left:15px;
+            &:hover .arrow {
+                left: 15px;
             }
 
             // 箭頭
