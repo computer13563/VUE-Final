@@ -53,7 +53,7 @@ export default{
     },
     methods:{
         go_product_page(){
-            this.$router.push('/index/allproduct');
+            this.$router.push('/allproduct');
             window.scroll(0,0);
         }
     }

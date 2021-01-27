@@ -44,7 +44,7 @@
             <!-- 用戶看到的商品頁面的商品卡片 -->
             <section class="row product_page_content">
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row row_card_item">
                         <div class="col-12 col-md-6 col-lg-4 product_card" v-for="(item,index) in filter_data"
                             :key="item.id">
                             <div class="card_item">
@@ -101,6 +101,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12">
+
+                    <!-- pagination -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+                                <a class="page-link" href="#" aria-label="Previous"
+                                    @click.prevent="get_product_list(pagination.current_page-1),go_top()">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item" v-for="page in pagination.total_pages" :key="page">
+                                <a class="page-link" href="#" :class="{'active':page === pagination.current_page}"
+                                    @click.prevent="get_product_list(page),go_top()">{{page}}</a>
+                            </li>
+                            <li class="page-item" :class="{'disabled':!pagination.has_next}">
+                                <a class="page-link" href="#" aria-label="Next"
+                                    @click.prevent="get_product_list(pagination.current_page+1),go_top()">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </section>
 
         </div>
@@ -119,6 +144,7 @@
         data() {
             return {
                 products: {},
+                pagination: {},
                 categories: {},
                 filter: {},
                 isLoading: false,
@@ -137,11 +163,13 @@
                 get_products_api(page)
                     .then(res => {
                         vm.products = res.data.products;
+                        vm.pagination = res.data.pagination;
                         vm.products.forEach(item => {
                             new_category.add(item.category);
                         })
                         vm.categories = [...new_category];
                         vm.isLoading = false;
+                        console.log(res);
                     })
             },
             add_to_cart(id, index, qty = 1) {
@@ -209,6 +237,9 @@
                 this.$router.push(`/product/${product_id}`);
                 window.scroll(0, 0);
             },
+            go_top() {
+                window.scroll(0, 0);
+            }
         },
         computed: {
             filter_data() {
@@ -247,6 +278,12 @@
             width: 100%;
             height: 100%;
         }
+    }
+
+    .row_card_item {
+        width: 100%;
+        max-width: 1440px;
+        margin: auto;
     }
 
     // 產品頁面的主要內容
@@ -449,7 +486,6 @@
 
         // 商品卡片的圖片
         @at-root .card_item_img {
-
             margin: 0 auto;
             border-radius: 20px;
             width: 100%;
@@ -468,18 +504,6 @@
                 }
             }
 
-            // @at-root & img {
-            //     display: block;
-            //     width: 100%;
-            //     height: 100%;
-            //     transform: scale(1, 1);
-            //     transition: .3s;
-
-            //     &:hover {
-            //         border-radius: 20px;
-            //         transform: scale(1.2, 1.2);
-            //     }
-            // }
         }
 
         // 滑鼠摸到才顯示 加入購物車的 ICON
@@ -634,5 +658,38 @@
             font-size: 15px;
             letter-spacing: 5px;
         }
+    }
+
+    // 頁碼
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 20px 0;
+
+        li {
+            margin: 0 5px;
+        }
+
+        @at-root .page-link {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            color: #620062 !important;
+            background: #fffedf;
+
+            &:hover {
+                color: #fff !important;
+                background: #7b5a90;
+            }
+        }
+    }
+
+    .active {
+        color: #fff !important;
+        background: #642f7a;
     }
 </style>

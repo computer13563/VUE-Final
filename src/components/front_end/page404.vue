@@ -41,9 +41,10 @@
     }
 
     .row {
-        max-width: 1440px;
+        max-width: 3840px;
         width: 100vw;
         overflow: hidden;
+        margin: auto;
     }
 
     .col {

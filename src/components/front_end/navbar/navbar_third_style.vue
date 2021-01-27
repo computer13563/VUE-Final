@@ -108,6 +108,7 @@
 
     .nav_row {
         max-width: 1440px;
+        margin: auto;
     }
 
     .navbar_col {
@@ -125,7 +126,6 @@
             span {
                 color: #f0a28f;
             }
-
         }
 
         // 導覽列裡面選項

@@ -129,6 +129,7 @@
     .row_detail {
         max-width: 1440px;
         overflow: hidden;
+        margin: auto;
     }
 
     .col_detail {

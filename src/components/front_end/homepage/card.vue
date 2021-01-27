@@ -76,7 +76,7 @@ export default {
     },
     methods:{
         more(){
-            this.$router.push('/index/allproduct');
+            this.$router.push('/allproduct');
             window.scroll(0,0);
         }
     }

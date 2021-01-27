@@ -74,40 +74,39 @@ const routes = [
     ]
   },
   {
-    path:'/product/:product_id',
-    name:'ProductDetail',
-    component:ProductDetail
+    path: '/product/:product_id',
+    name: 'ProductDetail',
+    component: ProductDetail
   },
   // 消息頁面
   {
     path: '/news',
     name: 'News',
     component: News,
-    redirect:'/news',
-    children:[
-      {
-        path:'',
-        name:'AllNews',
-        component:AllNews
+    redirect: '/news',
+    children: [{
+        path: '',
+        name: 'AllNews',
+        component: AllNews
       },
       {
-        path:':news_id',
-        name:'NewsDetail',
-        component:NewsDetail
+        path: ':news_id',
+        name: 'NewsDetail',
+        component: NewsDetail
       }
     ]
   },
   // 購物流程頁面
   {
-    path:'/process',
-    name:'ShoppingProcessPage',
-    component:ShoppingProcessPage
+    path: '/process',
+    name: 'ShoppingProcessPage',
+    component: ShoppingProcessPage
   },
   // 關於我們頁面
   {
-    path:'/about',
-    name:'AboutUs',
-    component:AboutUs
+    path: '/about',
+    name: 'AboutUs',
+    component: AboutUs
   },
   // 購物車
   {
@@ -168,7 +167,7 @@ const routes = [
     },
     children: [{
         path: '',
-        redirect: '/admin/products',
+        redirect: 'products',
         meta: {
           requiresAuth: true
         }
@@ -218,6 +217,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     user_status().then(res => {
+      console.log(res);
       if (res.data.success) {
         next();
       } else {

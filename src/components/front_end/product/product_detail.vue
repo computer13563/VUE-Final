@@ -1,5 +1,7 @@
 <template>
     <div>
+        <loading :active.sync="isLoading"> </loading>
+
         <NavbarFourthStyle></NavbarFourthStyle>
         <div class="container-fluid container_pro_detail">
 
@@ -69,146 +71,154 @@
             </div>
 
             <!-- 商品敘述 -->
-            <div class="row row_product_intro">
-                <div class="col-12 col_product_intro">
+            <div class="container-fluid container_product_intro">
+                <div class="row row_product_intro">
+                    <div class="col-12 col_product_intro">
 
-                    <p class="product_indro">
-                        <span>商品介紹</span>
-                    </p>
-
-                    <!-- 商品介紹的外層 -->
-                    <div class="product_intro_block">
-
-                        <!-- 商品介紹的圖 -->
-                        <p class="product_intro_block_bg"> </p>
-
-                        <!-- 商品介紹的字 -->
-                        <p class="product_intro_block_text">
-                            <span>
-                                {{product.content}}
-                            </span>
+                        <p class="product_indro">
+                            <span>商品介紹</span>
                         </p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 商品原料的說明 -->
-            <div class="row row_material_butter">
-                <!-- 奶油說明 -->
-                <div class="col-12 col_material_butter">
-                    <p class="material_source">
-                        <span>原料來源</span>
-                    </p>
+                        <!-- 商品介紹的外層 -->
+                        <div class="product_intro_block">
 
-                    <!-- 奶油的外容器 -->
-                    <div class="butter">
+                            <!-- 商品介紹的圖 -->
+                            <p class="product_intro_block_bg"> </p>
 
-                        <!-- 奶油的橫圖 -->
-                        <p class="butter_lg_bg"></p>
-
-                        <!-- 奶油的說明文字 -->
-                        <div class="butter_text">
-                            <span class="butter_text_title">
-                                法國百年品牌嚴選奶油
-                            </span>
-
-                            <p class="butter_text_content">
+                            <!-- 商品介紹的字 -->
+                            <p class="product_intro_block_text">
                                 <span>
-                                    嚴選自法國的高級奶油，
-                                </span>
-                                <span>
-                                    嚴選自法國的高級奶油，
-                                </span>
-                                <span>
-                                    嚴選自法國的高級奶油，
-                                </span>
-                                <span>
-                                    嚴選自法國的高級奶油。
+                                    {{product.content}}
                                 </span>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
 
             <!-- 商品原料的說明 -->
-            <div class="row row_material_milk">
-                <!-- 牛奶說明 -->
-                <div class="col-12 col_material_milk">
-                    <p class="material_source">
-                        <span>原料來源</span>
-                    </p>
-                    <!-- 牛奶的外容器 -->
-                    <div class="milk">
-                        <!-- 牛奶的橫圖 -->
-                        <p class="milk_lg_bg"> </p>
-                        <!-- 牛奶說明文字 -->
-                        <div class="milk_text">
-                            <span class="milk_text_title">
-                                北海道百年品牌嚴選牛奶
-                            </span>
+            <div class="container-fluid container_material_butter">
+                <div class="row row_material_butter">
+                    <!-- 奶油說明 -->
+                    <div class="col-12 col_material_butter">
+                        <p class="material_source">
+                            <span>原料來源</span>
+                        </p>
 
-                            <p class="milk_text_content">
-                                <span>
-                                    嚴選自北海道的嚴選牛奶，
+                        <!-- 奶油的外容器 -->
+                        <div class="butter">
+
+                            <!-- 奶油的橫圖 -->
+                            <p class="butter_lg_bg"></p>
+
+                            <!-- 奶油的說明文字 -->
+                            <div class="butter_text">
+                                <span class="butter_text_title">
+                                    法國百年品牌嚴選奶油
                                 </span>
-                                <span>
-                                    嚴選自北海道的嚴選牛奶，
+
+                                <p class="butter_text_content">
+                                    <span>
+                                        嚴選自法國的高級奶油，
+                                    </span>
+                                    <span>
+                                        嚴選自法國的高級奶油，
+                                    </span>
+                                    <span>
+                                        嚴選自法國的高級奶油，
+                                    </span>
+                                    <span>
+                                        嚴選自法國的高級奶油。
+                                    </span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品原料的說明 -->
+            <div class="container-fluid container_material_milk">
+                <div class="row row_material_milk">
+                    <!-- 牛奶說明 -->
+                    <div class="col-12 col_material_milk">
+                        <p class="material_source">
+                            <span>原料來源</span>
+                        </p>
+                        <!-- 牛奶的外容器 -->
+                        <div class="milk">
+                            <!-- 牛奶的橫圖 -->
+                            <p class="milk_lg_bg"> </p>
+                            <!-- 牛奶說明文字 -->
+                            <div class="milk_text">
+                                <span class="milk_text_title">
+                                    北海道百年品牌嚴選牛奶
                                 </span>
-                                <span>
-                                    嚴選自北海道的嚴選牛奶，
-                                </span>
-                                <span>
-                                    嚴選自北海道的嚴選牛奶。
-                                </span>
-                            </p>
+
+                                <p class="milk_text_content">
+                                    <span>
+                                        嚴選自北海道的嚴選牛奶，
+                                    </span>
+                                    <span>
+                                        嚴選自北海道的嚴選牛奶，
+                                    </span>
+                                    <span>
+                                        嚴選自北海道的嚴選牛奶，
+                                    </span>
+                                    <span>
+                                        嚴選自北海道的嚴選牛奶。
+                                    </span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- 商品規格 -->
-            <div class="row row_spec">
-                <div class="col-12">
-                    <p class="spec_text">
-                        <span>商品規格</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-4 col_spec">
-                    <p class="spec_item size">
-                        <span class="spec_item_detail">商品大小</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-8 col_spec">
-                    <p class="spec_item size_detail">
-                        <span class="spec_item_detail">W30 X D30 X H30 (cm)</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-4 col_spec">
-                    <p class="spec_item weight">
-                        <span class="spec_item_detail">商品重量</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-8 col_spec">
-                    <p class="spec_item weight_detail">
-                        <span class="spec_item_detail">約 500 公克</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-4 col_spec">
-                    <p class="spec_item note">
-                        <span class="spec_item_detail">注意事項</span>
-                    </p>
-                </div>
-                <div class="col-12 col-md-8 col_spec">
-                    <p class="spec_item note_detail">
-                        <ul class="spec_item_detail">
-                            <li>本商品需冷藏低於20度之環境</li>
-                            <li>本商品未加防腐劑，請盡快食用完畢</li>
-                            <li>商品成分含有奶、蛋，無法食用上述食材請於訂單內備註</li>
-                            <li>運送過程如有碰撞，請於收到後撥打客服專線</li>
-                        </ul>
-                    </p>
+            <div class="container-fluid container_spec">
+                <div class="row row_spec">
+                    <div class="col-12">
+                        <p class="spec_text">
+                            <span>商品規格</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-4 col_spec">
+                        <p class="spec_item size">
+                            <span class="spec_item_detail">商品大小</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-8 col_spec">
+                        <p class="spec_item size_detail">
+                            <span class="spec_item_detail">W30 X D30 X H30 (cm)</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-4 col_spec">
+                        <p class="spec_item weight">
+                            <span class="spec_item_detail">商品重量</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-8 col_spec">
+                        <p class="spec_item weight_detail">
+                            <span class="spec_item_detail">約 500 公克</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-4 col_spec">
+                        <p class="spec_item note">
+                            <span class="spec_item_detail">注意事項</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-8 col_spec">
+                        <p class="spec_item note_detail">
+                            <ul class="spec_item_detail">
+                                <li>本商品需冷藏低於20度之環境</li>
+                                <li>本商品未加防腐劑，請盡快食用完畢</li>
+                                <li>商品成分含有奶、蛋，無法食用上述食材請於訂單內備註</li>
+                                <li>運送過程如有碰撞，請於收到後撥打客服專線</li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,6 +262,7 @@
                     img: '',
                 },
                 product_id: '',
+                isLoading: false
             }
         },
         methods: {
@@ -295,6 +306,7 @@
             product_detail() {
                 const vm = this;
                 const id = vm.product_id;
+                vm.isLoading = true;
                 product_detail_api(id).then(res => {
                     vm.product = res.data.product;
                     console.log(res.data);
@@ -317,7 +329,7 @@
                             }
                         })
                     })
-
+                    vm.isLoading = false;
                 })
             },
 
@@ -403,7 +415,7 @@
 
         // 商品圖片的右邊說明
         @at-root .col_pro_description {
-            padding: 50px 0 50px 50px;
+            padding: 0px 0 20px 50px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -439,6 +451,8 @@
             .description {
                 font-size: 18px;
                 letter-spacing: 10px;
+                line-height: 35px;
+                max-width: 500px;
             }
 
             // 加入購物車按紐
@@ -479,41 +493,46 @@
     }
 
     // 商品介紹
-    .row_product_intro {
-        width: 100%;
+    .container_product_intro {
         border-top: 1px solid #583f6d;
 
-        @at-root .col_product_intro {
+        .row_product_intro {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
 
-            // 商品介紹外層
-            @at-root .product_intro_block {
-                width: 80vw;
-                padding: 100px 0 50px;
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+            @at-root .col_product_intro {
 
-                // 商品介紹圖片
-                @at-root .product_intro_block_bg {
-                    height: 80vh;
-                    max-height: 420px;
-                    background: url('../../../assets/photos/chef.jpg') center center/100% no-repeat;
-                }
+                // 商品介紹外層
+                @at-root .product_intro_block {
+                    width: 80vw;
+                    padding: 100px 0 50px;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
 
-                // 商品介紹文字
-                @at-root .product_intro_block_text {
-                    width: 60%;
-                    margin: 50px auto 0;
-                    text-indent: 52px;
-                    text-align: justify;
+                    // 商品介紹圖片
+                    @at-root .product_intro_block_bg {
+                        height: 80vh;
+                        max-height: 420px;
+                        background: url('../../../assets/photos/chef.jpg') center center/100% no-repeat;
+                    }
 
-                    span {
-                        color: #fff;
-                        font-size: 20px;
-                        letter-spacing: 5px;
-                        line-height: 30px;
-                        font-weight: 100;
+                    // 商品介紹文字
+                    @at-root .product_intro_block_text {
+                        width: 60%;
+                        margin: 50px auto 0;
+                        text-indent: 52px;
+                        text-align: justify;
+
+                        span {
+                            color: #fff;
+                            font-size: 20px;
+                            letter-spacing: 5px;
+                            line-height: 30px;
+                            font-weight: 100;
+                        }
                     }
                 }
             }
@@ -521,108 +540,118 @@
     }
 
     // 商品原料說明   奶油
-    .row_material_butter {
-        width: 100%;
+    .container_material_butter {
         border-top: 1px solid #583f6d;
 
-        // 奶油
-        @at-root .col_material_butter {
+        .row_material_butter {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
 
-            // 奶油的容器
-            @at-root .butter {
-                width: 80vw;
-                height: 720px;
-                padding: 100px 0 50px;
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+            // 奶油
+            @at-root .col_material_butter {
 
-                // 奶油大圖
-                @at-root .butter_lg_bg {
-                    height: 80vh;
-                    max-height: 420px;
-                    background: url('../../../assets/photos/butter_big_img_new.jpg') center center/100% no-repeat;
-                }
+                // 奶油的容器
+                @at-root .butter {
+                    width: 80vw;
+                    height: 720px;
+                    padding: 100px 0 50px;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
 
-                // 奶油說明文字
-                @at-root .butter_text {
-                    padding: 30px 0 0px 0;
-                    width: 100%;
-
-                    .butter_text_title {
-                        display: block;
-                        padding: 0 0 30px 0;
-                        font-size: 30px;
-                        font-weight: 100;
-                        letter-spacing: 10px;
-                        color: #fff;
-                        text-align: center;
+                    // 奶油大圖
+                    @at-root .butter_lg_bg {
+                        height: 80vh;
+                        max-height: 420px;
+                        background: url('../../../assets/photos/butter_big_img_new.jpg') center center/100% no-repeat;
                     }
 
-                    span:not(.butter_text_title) {
-                        display: block;
-                        font-size: 20px;
-                        font-weight: 100;
-                        letter-spacing: 5px;
-                        color: #fff;
-                        text-align: center;
-                        padding: 5px;
+                    // 奶油說明文字
+                    @at-root .butter_text {
+                        padding: 30px 0 0px 0;
+                        width: 100%;
+
+                        .butter_text_title {
+                            display: block;
+                            padding: 0 0 30px 0;
+                            font-size: 30px;
+                            font-weight: 100;
+                            letter-spacing: 10px;
+                            color: #fff;
+                            text-align: center;
+                        }
+
+                        span:not(.butter_text_title) {
+                            display: block;
+                            font-size: 20px;
+                            font-weight: 100;
+                            letter-spacing: 5px;
+                            color: #fff;
+                            text-align: center;
+                            padding: 5px;
+                        }
                     }
                 }
             }
-        }
 
+        }
     }
 
     // 商品原料說明   牛奶
-    .row_material_milk {
-        width: 100%;
+    .container_material_milk {
         border-top: 1px solid #583f6d;
 
-        // 牛奶
-        @at-root .col_material_milk {
+        .row_material_milk {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
 
-            // 牛奶的容器
-            @at-root .milk {
-                width: 80vw;
-                height: 720px;
-                padding: 100px 0 50px;
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+            // 牛奶
+            @at-root .col_material_milk {
 
-                // 牛奶大圖
-                @at-root .milk_lg_bg {
-                    height: 80vh;
-                    max-height: 420px;
-                    background: url('../../../assets/photos/milk_cow_new.jpg') center center/100% no-repeat;
-                }
+                // 牛奶的容器
+                @at-root .milk {
+                    width: 80vw;
+                    height: 720px;
+                    padding: 100px 0 50px;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
 
-                // 牛奶說明文字
-                @at-root .milk_text {
-                    padding: 30px 0 0px 0;
-                    width: 100%;
-
-                    .milk_text_title {
-                        display: block;
-                        padding: 0 0 30px 0;
-                        font-size: 30px;
-                        font-weight: 100;
-                        letter-spacing: 10px;
-                        color: #fff;
-                        text-align: center;
+                    // 牛奶大圖
+                    @at-root .milk_lg_bg {
+                        height: 80vh;
+                        max-height: 420px;
+                        background: url('../../../assets/photos/milk_cow_new.jpg') center center/100% no-repeat;
                     }
 
-                    span:not(.milk_text_title) {
-                        display: block;
-                        font-size: 20px;
-                        font-weight: 100;
-                        letter-spacing: 5px;
-                        color: #fff;
-                        text-align: center;
-                        padding: 5px;
+                    // 牛奶說明文字
+                    @at-root .milk_text {
+                        padding: 30px 0 0px 0;
+                        width: 100%;
+
+                        .milk_text_title {
+                            display: block;
+                            padding: 0 0 30px 0;
+                            font-size: 30px;
+                            font-weight: 100;
+                            letter-spacing: 10px;
+                            color: #fff;
+                            text-align: center;
+                        }
+
+                        span:not(.milk_text_title) {
+                            display: block;
+                            font-size: 20px;
+                            font-weight: 100;
+                            letter-spacing: 5px;
+                            color: #fff;
+                            text-align: center;
+                            padding: 5px;
+                        }
                     }
                 }
             }
@@ -630,35 +659,39 @@
     }
 
     // 商品規格
-    .row_spec {
-        width: 50%;
-        margin: auto;
-        overflow: hidden;
+    .container_spec {
+        border-top: 1px solid #583f6d;
 
-        @at-root .col_spec {
-            @at-root .spec_text {
-                margin: 0px 0 50px 0;
-            }
+        .row_spec {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
 
-            @at-root .spec_item {
-                padding: 20px;
-                margin: 5px;
-                background: #8591B7;
+            @at-root .col_spec {
+                @at-root .spec_text {
+                    margin: 0px 0 50px 0;
+                }
+
+                @at-root .spec_item {
+                    padding: 20px;
+                    margin: 5px;
+                    background: #8591B7;
 
 
-                @at-root .spec_item_detail {
-                    color: #fff;
-                    font-size: 15px;
-                    font-weight: 100;
-                    letter-spacing: 5px;
+                    @at-root .spec_item_detail {
+                        color: #fff;
+                        font-size: 15px;
+                        font-weight: 100;
+                        letter-spacing: 5px;
+                    }
+                }
+
+                li {
+                    margin: 0 0 10px 20px;
+                    line-height: 30px;
                 }
             }
 
-            li {
-                margin: 0 0 10px 20px;
-                line-height: 30px;
-            }
         }
-
     }
 </style>

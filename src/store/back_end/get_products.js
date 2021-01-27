@@ -1,3 +1,4 @@
+import router from '../../router/index'
 import {
     create_product,
     getsingle_page_products,
@@ -43,7 +44,6 @@ export default {
     actions: {
         getsingle_page_product(context, page) {
             context.commit('LOADING', true, { root : true } );
-            const vm = this;
             getsingle_page_products(page)
                 .then(response => {
                     if (response.data.success) {
@@ -53,6 +53,7 @@ export default {
                         console.log(response);
                     } else {
                         console.log(response);
+                        router.push('/login');
                         context.commit('LOADING', false, { root : true } );
                     }
                 });

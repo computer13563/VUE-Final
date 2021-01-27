@@ -146,7 +146,8 @@
     .container_about {
         .row_img_title {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1920px;
+            margin: auto;
 
             @at-root .col_title {
                 width: 100%;
@@ -174,6 +175,7 @@
             width: 100%;
             max-width: 1400px;
             margin-bottom: 100px;
+            margin: auto;
 
             @at-root .col_content_title {
                 width: 80%;
@@ -191,7 +193,7 @@
         .row_content_detail {
             width: 100%;
             max-width: 1400px;
-            margin-bottom: 100px;
+            margin:0 auto 100px;
 
             @at-root .col_content_detail {}
 
@@ -207,7 +209,7 @@
         .row_link {
             width: 100%;
             max-width: 1400px;
-            margin: 0 0 30px 0;
+            margin: 0 auto 30px ;
 
             @at-root .col_link {
                 width: 60%;

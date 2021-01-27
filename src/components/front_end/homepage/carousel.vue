@@ -204,14 +204,15 @@
     }
 
     .swiper-container {
-        width: 100%;
-        max-width: 1500px;
+        width: 100vw;
+        max-width: 1920px;
         height: calc(100vh - 40px);
         max-height: 843.75px;
+        margin: auto;
 
         img {
             width: 100vw;
-            max-width: 1500px;
+            max-width: 1920px;
             height: 100%;
             max-height: 843.75px;
         }

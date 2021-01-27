@@ -244,7 +244,7 @@
 
     // 隨著網頁捲動長長的線
     .grow_line {
-        height: 1px;
+        height: 2px;
         background: #fff;
         position: absolute;
         bottom: 0;

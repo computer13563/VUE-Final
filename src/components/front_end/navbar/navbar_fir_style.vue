@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container_nav " id="test">
+        <div class="container_nav">
             <nav class="main_nav">
                 <section class="main_nav_section">
 
@@ -113,21 +113,22 @@
         background: linear-gradient(rgba(0, 0, 0, .8), rgba(255, 255, 255, 0));
         position: fixed;
         z-index: 10;
-        width: 100%;
+        width: 100vw;
         color: #fff;
+        
         transition: .3s;
 
         a {
             color: currentColor;
             transition: .2s;
-
         }
 
         .main_nav {
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
             padding: 20px 20px 0 20px;
             margin: auto;
+            overflow: hidden;
         }
 
         .main_nav_section {
